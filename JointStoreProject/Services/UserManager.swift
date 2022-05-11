@@ -9,8 +9,8 @@ class UserManager {
     static let shared = UserManager()
     
     let users = [
-        User(login: "client", password: "qwerty"),
-        User(login: "employee", password: "qwerty")
+        User(login: "client", password: "qwerty", type: .client),
+        User(login: "employee", password: "qwerty", type: .employee)
     ]
     
     private init() {}
