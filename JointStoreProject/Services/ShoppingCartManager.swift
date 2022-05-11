@@ -19,20 +19,28 @@ class ShoppingCartManager {
         products
     }
     
-    func addProduct(name: String, description: String, count: Int) {
-        products.append(getProductItem(name: name, description: description, count: count))
+    func addProductItem(product: Product, count: Int) {
+        if let productItem = products.first(where: { $0.product.name == product.name }) {
+            productItem.count += count
+        } else {
+            products.append(getProductItem(product: product, count: count))
+        }
         
-        storeManagerDelegate.reduceCountProduct(name: name, by: count)
+        storeManagerDelegate.reduceCountProduct(name: product.name, by: count)
     }
     
-    func removeProduct(index: Int) {
+    func removeProductItem(product: Product) {
+        guard let index = products.firstIndex(where: { $0.product.name == product.name }) else { return }
+        
         let item = products.remove(at: index)
         
         storeManagerDelegate.increaseCountProduct(name: item.product.name, by: item.count)
     }
     
-    func changeCountProduct(index: Int, count: Int) {
-        let item = products[index]
+    func changeCountOf(productItem: ProductItem, count: Int) {
+        guard let item = products.first(where: { $0.product.name == productItem.product.name }) else {
+            return
+        }
         
         item.count = count
         
@@ -53,11 +61,7 @@ class ShoppingCartManager {
         products.removeAll()
     }
     
-    private func getProductItem(name: String, description: String, count: Int) -> ProductItem {
-        ProductItem(product: getProduct(name: name, description: description), count: count)
-    }
-    
-    private func getProduct(name: String, description: String) -> Product {
-        Product(name: name, description: description)
+    private func getProductItem(product: Product, count: Int) -> ProductItem {
+        ProductItem(product: product, count: count)
     }
 }
