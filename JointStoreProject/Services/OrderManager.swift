@@ -7,10 +7,6 @@
 
 import Foundation
 
-protocol OrderManagerDelegateProtocol {
-    func createOrder(products: [ProductItem], number: Int)
-}
-
 class OrderManager {
     static let shared = OrderManager()
     
@@ -21,9 +17,7 @@ class OrderManager {
     func getOrders() -> [Order] {
         orders
     }
-}
-
-extension OrderManager: OrderManagerDelegateProtocol {
+    
     func createOrder(products: [ProductItem], number: Int) {
         orders.append(getOrder(products: products, number: number))
     }
@@ -34,3 +28,4 @@ extension OrderManager: OrderManagerDelegateProtocol {
         return Order(items: products, number: number, date: date)
     }
 }
+

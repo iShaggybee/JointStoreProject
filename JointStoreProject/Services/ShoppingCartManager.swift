@@ -8,8 +8,8 @@
 class ShoppingCartManager {
     static let shared = ShoppingCartManager()
     
-    var storeManagerDelegate = StoreManager.shared as StoreManagerDelegateProtocol
-    var orderManagerDelegate = OrderManager.shared as OrderManagerDelegateProtocol
+    var storeManager = StoreManager.shared
+    var orderManager = OrderManager.shared
     
     private var products: [ProductItem] = []
     
@@ -26,7 +26,7 @@ class ShoppingCartManager {
             products.append(getProductItem(product: product, count: count))
         }
         
-        storeManagerDelegate.reduceCountProduct(name: product.name, by: count)
+        storeManager.reduceCountProduct(name: product.name, by: count)
     }
     
     func removeProductItem(product: Product) {
@@ -34,7 +34,7 @@ class ShoppingCartManager {
         
         let item = products.remove(at: index)
         
-        storeManagerDelegate.increaseCountProduct(name: item.product.name, by: item.count)
+        storeManager.increaseCountProduct(name: item.product.name, by: item.count)
     }
     
     func changeCountOf(productItem: ProductItem, count: Int) {
@@ -44,18 +44,18 @@ class ShoppingCartManager {
         
         item.count = count
         
-        storeManagerDelegate.changeCountProduct(name: item.product.name, by: count)
+        storeManager.changeCountProduct(name: item.product.name, by: count)
     }
     
     func createOrder() {
-        orderManagerDelegate.createOrder(products: products, number: Int.random(in: 1000000..<999999))
+        orderManager.createOrder(products: products, number: Int.random(in: 1000000..<999999))
         
         products.removeAll()
     }
     
     func clearShoppingCart() {
         for item in products {
-            storeManagerDelegate.increaseCountProduct(name: item.product.name, by: item.count)
+            storeManager.increaseCountProduct(name: item.product.name, by: item.count)
         }
         
         products.removeAll()

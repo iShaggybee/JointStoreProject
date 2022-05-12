@@ -5,12 +5,6 @@
 //  Created by Kislov Vadim on 11.05.2022.
 //
 
-protocol StoreManagerDelegateProtocol {
-    func increaseCountProduct(name: String, by count: Int)
-    func reduceCountProduct(name: String, by count: Int)
-    func changeCountProduct(name: String, by count: Int)
-}
-
 class StoreManager {
     static let shared = StoreManager()
     
@@ -34,16 +28,6 @@ class StoreManager {
         productItem.product.description = description
     }
     
-    private func getProductItem(name: String, description: String, count: Int) -> ProductItem {
-        ProductItem(product: getProduct(name: name, description: description), count: count)
-    }
-    
-    private func getProduct(name: String, description: String) -> Product {
-        Product(name: name, description: description)
-    }
-}
-
-extension StoreManager: StoreManagerDelegateProtocol {
     func increaseCountProduct(name: String, by count: Int) {
         guard let productItem = products.first(where: { $0.product.name == name }) else {
             return
@@ -67,4 +51,13 @@ extension StoreManager: StoreManagerDelegateProtocol {
         
         productItem.count = count
     }
+    
+    private func getProductItem(name: String, description: String, count: Int) -> ProductItem {
+        ProductItem(product: getProduct(name: name, description: description), count: count)
+    }
+    
+    private func getProduct(name: String, description: String) -> Product {
+        Product(name: name, description: description)
+    }
 }
+
