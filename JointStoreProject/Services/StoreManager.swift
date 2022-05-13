@@ -8,7 +8,7 @@
 class StoreManager {
      static let shared = StoreManager()
 
-     let products: [Product] = [
+     let products = [
         Product(name: "Помидоры розовые",
                 description: """
                         Помидоры имеют превосходные вкусовые качества и аромат.
