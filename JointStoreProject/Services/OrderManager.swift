@@ -10,22 +10,36 @@ import Foundation
 class OrderManager {
     static let shared = OrderManager()
     
+    private let authManager = AuthManager.shared
     private var orders: [Order] = []
     
     private init() {}
     
     func getOrders() -> [Order] {
-        orders
+        guard let currentUserIndex = authManager.currentUserIndex else { return [] }
+        
+        return orders.filter { $0.userIndex == currentUserIndex }
     }
     
-    func createOrder(products: [ProductItem], number: Int) {
-        orders.append(getOrder(products: products, number: number))
+    func createOrder(products: [ProductItem]) {
+        guard let currentUserIndex = authManager.currentUserIndex else { return }
+        
+        let number = Int.random(in: 1000000..<999999)
+        
+        orders.append(getNewOrder(products: products,
+                                  number: number,
+                                  userIndex: currentUserIndex))
     }
     
-    private func getOrder(products: [ProductItem], number: Int) -> Order {
+    private func getNewOrder(products: [ProductItem], number: Int, userIndex: Int) -> Order {
         let date = Date.now.formatted(date: .long, time: .shortened)
         
-        return Order(items: products, number: number, date: date)
+        let totalPrice = products.reduce(0, { $0 + $1.getTotalPrice() })
+        
+        return Order(items: products,
+                     number: number,
+                     date: date,
+                     totalPrice: totalPrice,
+                     userIndex: userIndex)
     }
 }
-

@@ -9,4 +9,6 @@ struct Order {
     let items: [ProductItem]
     let number: Int
     let date: String
+    let totalPrice: Int
+    let userIndex: Int
 }

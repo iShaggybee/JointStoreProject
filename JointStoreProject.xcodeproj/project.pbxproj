@@ -11,9 +11,8 @@
 		63BB91E9282BE414000642C0 /* ProductItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB91E8282BE414000642C0 /* ProductItem.swift */; };
 		63BB91EB282BE496000642C0 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB91EA282BE496000642C0 /* Order.swift */; };
 		63BB91ED282BE90C000642C0 /* OrderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB91EC282BE90C000642C0 /* OrderManager.swift */; };
-		63BB91EF282BEABB000642C0 /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB91EE282BEABB000642C0 /* StoreManager.swift */; };
 		63BB91F1282BFEC8000642C0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB91F0282BFEC8000642C0 /* User.swift */; };
-		63BB91F3282BFF54000642C0 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB91F2282BFF54000642C0 /* UserManager.swift */; };
+		63BB91F3282BFF54000642C0 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB91F2282BFF54000642C0 /* AuthManager.swift */; };
 		63BB91F5282C00D6000642C0 /* ShoppingCartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB91F4282C00D6000642C0 /* ShoppingCartManager.swift */; };
 		63BE35AF282ABEA200DE27E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BE35AE282ABEA200DE27E2 /* AppDelegate.swift */; };
 		63BE35B1282ABEA200DE27E2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BE35B0282ABEA200DE27E2 /* SceneDelegate.swift */; };
@@ -28,9 +27,8 @@
 		63BB91E8282BE414000642C0 /* ProductItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItem.swift; sourceTree = "<group>"; };
 		63BB91EA282BE496000642C0 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		63BB91EC282BE90C000642C0 /* OrderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderManager.swift; sourceTree = "<group>"; };
-		63BB91EE282BEABB000642C0 /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
 		63BB91F0282BFEC8000642C0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		63BB91F2282BFF54000642C0 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		63BB91F2282BFF54000642C0 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		63BB91F4282C00D6000642C0 /* ShoppingCartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartManager.swift; sourceTree = "<group>"; };
 		63BE35AB282ABEA200DE27E2 /* JointStoreProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JointStoreProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63BE35AE282ABEA200DE27E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -132,8 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				63BB91EC282BE90C000642C0 /* OrderManager.swift */,
-				63BB91EE282BEABB000642C0 /* StoreManager.swift */,
-				63BB91F2282BFF54000642C0 /* UserManager.swift */,
+				63BB91F2282BFF54000642C0 /* AuthManager.swift */,
 				63BB91F4282C00D6000642C0 /* ShoppingCartManager.swift */,
 			);
 			path = Services;
@@ -217,9 +214,8 @@
 				63BE35AF282ABEA200DE27E2 /* AppDelegate.swift in Sources */,
 				63BB91F5282C00D6000642C0 /* ShoppingCartManager.swift in Sources */,
 				63BB91F1282BFEC8000642C0 /* User.swift in Sources */,
-				63BB91EF282BEABB000642C0 /* StoreManager.swift in Sources */,
 				63BE35B1282ABEA200DE27E2 /* SceneDelegate.swift in Sources */,
-				63BB91F3282BFF54000642C0 /* UserManager.swift in Sources */,
+				63BB91F3282BFF54000642C0 /* AuthManager.swift in Sources */,
 				63BB91EB282BE496000642C0 /* Order.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
