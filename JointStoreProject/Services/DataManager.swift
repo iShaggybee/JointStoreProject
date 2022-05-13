@@ -10,5 +10,7 @@ import Foundation
 class DataManager {
     static let shared = DataManager()
     
+    let orderManager = OrderManager.shared
+    
     private init() {}
 }
