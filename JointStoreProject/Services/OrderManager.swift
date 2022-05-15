@@ -15,12 +15,14 @@ class OrderManager {
     
     private init() {}
     
+    /// Получение списка заказов для текущего авторизированного пользователя
     func getOrders() -> [Order] {
         guard let currentUserIndex = authManager.currentUserIndex else { return [] }
         
         return orders.filter { $0.userIndex == currentUserIndex }
     }
     
+    /// Создание заказа
     func createOrder(products: [ProductItem]) {
         guard let currentUserIndex = authManager.currentUserIndex else { return }
         
