@@ -13,6 +13,7 @@ class AuthManager {
     
     private init() {}
     
+    /// Авторизация пользователя
     func login(login: String, password: String) -> Bool {
         guard let index = users.firstIndex(where: { $0.login == login && $0.password == password }) else {
             return false
@@ -23,10 +24,12 @@ class AuthManager {
         return true
     }
     
+    /// Выход из аккаунта
     func logout() {
         currentUserIndex = nil
     }
     
+    /// Регистрация нового пользователя
     func addUser(login: String, password: String) -> Bool {
         if let _ = users.first(where: { $0.login == login }) {
             return false
@@ -37,10 +40,12 @@ class AuthManager {
         }
     }
     
+    /// Получение логина и пароля пользователя "по-умолчанию"
     func getInfoOnDefaultUser() -> User {
         users[0]
     }
  
+    /// Получение массива пользователей с данными
     func getUsersInfo() -> [User] {
         users
     }
