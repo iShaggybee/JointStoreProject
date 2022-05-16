@@ -29,12 +29,22 @@ class LoginViewController: UIViewController {
     
     @IBAction func remindInfo() {
         let users = authManager.getUsersInfo()
-        if let userIndex = users.firstIndex(where: { $0.login == loginTextField.text ?? ""}) != 999  {
-            let userInfo = users[userIndex]
-            setAlert(header: "Ничего страшгого,\(userInfo.login)", body: "Ваш пароль: \(userInfo.password)")
-        } else {
+        let userIndex = users.firstIndex(where: {$0.login == loginTextField.text})
+        
+        switch userIndex {
+            
+        case .none:
             setAlert(header: "Упс",
-                     body: "Такого пользователя нет. Попробуйте зарегистрироваться")}
+                     body: "Такого пользователя нет. Попробуйте зарегистрироваться")
+        case .some(_):
+            let userInfo = users[userIndex ?? 0]
+            if userIndex == 0 {
+                setAlert(header: "Вот дежурные данные",
+                         body: "Логин: \(userInfo.login), пароль: \(userInfo.password)")
+            } else {
+                setAlert(header: "Ничего страшгого,\(userInfo.login)", body: "Ваш пароль: \(userInfo.password)")
+            }
+        }
     }
     
     func logginIn() {
