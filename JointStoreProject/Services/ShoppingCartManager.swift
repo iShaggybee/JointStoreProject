@@ -92,8 +92,6 @@ class ShoppingCartManager {
         for (index, product) in products.enumerated() {
             if product.userIndex == userIndex {
                 products.remove(at: index)
-                
-                products.remove(at: <#T##Int#>)
             }
         }
     }
