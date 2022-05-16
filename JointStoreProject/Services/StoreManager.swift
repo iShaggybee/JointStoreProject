@@ -98,4 +98,11 @@ class StoreManager {
      ]
 
      private init() {}
+    
+    /// Поиск товара из доступных по полному/частичному названию
+    func searchProducts(by search: String) -> [Product] {
+        let trimmed = search.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        return products.filter { $0.name.contains(trimmed) }
+    }
 }

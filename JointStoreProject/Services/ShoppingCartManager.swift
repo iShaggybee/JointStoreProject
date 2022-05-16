@@ -15,6 +15,7 @@ class ShoppingCartManager {
     
     private init() {}
     
+    /// Получение списка товаров из корзины текущего пользователя
     func getProducts() -> [ProductItem] {
         guard let currentUserIndex = authManager.currentUserIndex else {
             return []
@@ -23,6 +24,7 @@ class ShoppingCartManager {
         return products.filter {$0.userIndex == currentUserIndex }
     }
     
+    /// Добавление продукта в корзину
     func addProductItem(product: Product, count: Int) {
         guard let userIndex = authManager.currentUserIndex else { return }
         
@@ -35,6 +37,7 @@ class ShoppingCartManager {
         }
     }
     
+    /// Удаление продукта из корзины
     func removeProductItem(product: Product) {
         guard let userIndex = authManager.currentUserIndex else { return }
         guard let index = products.firstIndex(where: { $0.product.name == product.name && $0.userIndex == userIndex }) else {
@@ -44,6 +47,7 @@ class ShoppingCartManager {
         products.remove(at: index)
     }
     
+    /// Увеличение количества товара в корзине на произвольную величину
     func increaseCountProduct(name: String, by count: Int) {
         guard let productItem = getProductItemBy(name: name) else {
             return
@@ -52,6 +56,7 @@ class ShoppingCartManager {
         productItem.count += count
     }
     
+    /// Уменьшение количества товара в корзине на произвольную величину
     func reduceCountProduct(name: String, by count: Int) {
         guard let productItem = getProductItemBy(name: name) else {
             return
@@ -60,6 +65,7 @@ class ShoppingCartManager {
         productItem.count -= count
     }
     
+    /// Изменение количества товара в корзине на произвольное значение
     func changeCountProduct(name: String, by count: Int) {
         guard let productItem = getProductItemBy(name: name) else {
             return
@@ -68,12 +74,14 @@ class ShoppingCartManager {
         productItem.count = count
     }
     
+    /// Создание заказа
     func createOrder() {
         orderManager.createOrder(products: getProducts())
         
         removeProductsForUser()
     }
     
+    /// Сброс корзины
     func clearShoppingCart() {
         removeProductsForUser()
     }
@@ -84,6 +92,8 @@ class ShoppingCartManager {
         for (index, product) in products.enumerated() {
             if product.userIndex == userIndex {
                 products.remove(at: index)
+                
+                products.remove(at: <#T##Int#>)
             }
         }
     }
