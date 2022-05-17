@@ -24,6 +24,19 @@ class ShoppingCartManager {
         return products.filter {$0.userIndex == currentUserIndex }
     }
     
+    //функция для тестирования
+    func getAllProducts() -> [ProductItem] {
+        
+        var productItems: [ProductItem] = []
+        
+        for product in StoreManager.shared.products {
+            productItems.append(ProductItem(product: product, count: Int.random(in: 1...10), userIndex: 0))
+        }
+        
+        return productItems
+        
+    }
+    
     /// Добавление продукта в корзину
     func addProductItem(product: Product, count: Int) {
         guard let userIndex = authManager.currentUserIndex else { return }
@@ -92,8 +105,6 @@ class ShoppingCartManager {
         for (index, product) in products.enumerated() {
             if product.userIndex == userIndex {
                 products.remove(at: index)
-                
-                products.remove(at: <#T##Int#>)
             }
         }
     }

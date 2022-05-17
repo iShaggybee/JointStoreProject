@@ -8,82 +8,133 @@
 import UIKit
 
 class CartViewController: UITableViewController {
+    
+    var cart: [ProductItem] = []
+    var editingCell: UITableViewCell?
+    var titleFooter: String {
+        let total = cart.reduce(into: 0) { partialResult, ProductItem in
+            partialResult += ProductItem.getTotalPrice()
+        }
+        
+        return "Итого на сумму \(total) рублей"
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        loadData()
+        
     }
+    
+    
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return cart.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cartCell", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cartCell", for: indexPath) as! CartCell
+        setupCell(for: cell, with: cart[indexPath.row])
         return cell
     }
 
-
-    /*
-    // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) else { return }
+        if let lastCell = editingCell, editingCell != cell {
+            lastCell.setEditing(false, animated: true)
+        }
+        cell.setEditing(!cell.isEditing, animated: true)
+        editingCell = cell
+        
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    
+    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return titleFooter
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+    
+    override func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+        guard let footerView = view as? UITableViewHeaderFooterView else {return}
+        updateFooterView(footerView: footerView)
     }
-    */
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func trashButtonPress(_ sender: UIBarButtonItem) {
+        ShoppingCartManager.shared.clearShoppingCart()
+        loadData()
+        tableView.reloadData()
     }
-    */
-
+    @IBAction func createOrderButtonPress() {
+        ShoppingCartManager.shared.createOrder()
+    }
+    
+    @objc func stepperPress(sender:UIStepper) {
+        guard let indexPath = tableView.indexPathForSelectedRow else {return}
+        guard let cell = tableView.cellForRow(at: indexPath) as? CartCell else { return }
+        let productItem = cart[indexPath.row]
+        ShoppingCartManager.shared.changeCountProduct(name: productItem.product.name, by: Int(sender.value))
+        productItem.count = Int(sender.value) //для тестирования
+        cell.countLabel.layer.add(getAnimation(), forKey: nil)
+        setupCell(for: cell, with: productItem)
+        updateFooter()
+    }
+    
+    private func loadData() {
+        //для тестирования
+        cart = ShoppingCartManager.shared.getAllProducts()
+        //cart = ShoppingCartManager.shared.getProducts()
+    }
+    
+    private func updateFooter() {
+        
+        guard let footerView = tableView.footerView(forSection: 0) else {return}
+        updateFooterView(footerView: footerView)
+    }
+    
+    private func updateFooterView(footerView: UITableViewHeaderFooterView) {
+        
+        var defContent = footerView.defaultContentConfiguration()
+        defContent.text = titleFooter
+        footerView.contentConfiguration = defContent
+    }
+    
+    private func setupCell(for cell: CartCell, with productItem: ProductItem) {
+        
+        let currentProduct = productItem.product
+        cell.productTitleLabel.text = currentProduct.name
+        cell.priceLabel.text = String(currentProduct.price)
+        cell.countLabel.text = "x \(productItem.count)"
+        cell.totalLabel.text = "\(productItem.getTotalPrice()) р."
+        let stepper = getStepper()
+        stepper.value = Double(productItem.count)
+        cell.editingAccessoryView = stepper
+        
+    }
+    
+    private func getAnimation() -> CASpringAnimation {
+        let animation = CASpringAnimation(keyPath: "transform.scale")
+        animation.duration = 0.5
+        animation.fromValue = 1
+        animation.toValue = 1.2
+        animation.initialVelocity = 0.5
+        animation.damping = 1
+        return animation
+    }
+    
+    private func getStepper() -> UIStepper {
+        let stepper = UIStepper()
+        stepper.minimumValue = 0
+        stepper.maximumValue = 99
+        stepper.stepValue = 1
+        stepper.addTarget(self, action: #selector(stepperPress), for: .valueChanged)
+        let incrementImage = stepper.incrementImage(for: .normal)?.withTintColor(.systemGreen, renderingMode: .alwaysOriginal)
+        stepper.setIncrementImage(incrementImage, for: .normal)
+        let decrementImage = stepper.decrementImage(for: .normal)?.withTintColor(.systemRed, renderingMode: .alwaysOriginal)
+        stepper.setDecrementImage(decrementImage, for: .normal)
+        return stepper
+    }
 }

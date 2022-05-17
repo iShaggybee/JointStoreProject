@@ -23,6 +23,7 @@
 		63BE35BB282ABEA300DE27E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63BE35B9282ABEA300DE27E2 /* LaunchScreen.storyboard */; };
 		E11478582831072100734A96 /* ShoppingCart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E11478572831072100734A96 /* ShoppingCart.storyboard */; };
 		E114785A28310D3900734A96 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E114785928310D3900734A96 /* CartViewController.swift */; };
+		E1ED5F0A2832583400D10320 /* CartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ED5F092832583400D10320 /* CartCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		63BE35BC282ABEA300DE27E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E11478572831072100734A96 /* ShoppingCart.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShoppingCart.storyboard; sourceTree = "<group>"; };
 		E114785928310D3900734A96 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
+		E1ED5F092832583400D10320 /* CartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				63BE35B2282ABEA200DE27E2 /* AuthViewController.swift */,
+				E1ED5F092832583400D10320 /* CartCell.swift */,
 				E114785928310D3900734A96 /* CartViewController.swift */,
 			);
 			path = Controllers;
@@ -223,6 +226,7 @@
 				630E2C7C282E550900578D60 /* StoreManager.swift in Sources */,
 				E114785A28310D3900734A96 /* CartViewController.swift in Sources */,
 				63BB91ED282BE90C000642C0 /* OrderManager.swift in Sources */,
+				E1ED5F0A2832583400D10320 /* CartCell.swift in Sources */,
 				63BE35AF282ABEA200DE27E2 /* AppDelegate.swift in Sources */,
 				63BB91F5282C00D6000642C0 /* ShoppingCartManager.swift in Sources */,
 				63BB91F1282BFEC8000642C0 /* User.swift in Sources */,
