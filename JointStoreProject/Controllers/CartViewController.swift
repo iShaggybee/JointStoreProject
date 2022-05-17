@@ -10,19 +10,27 @@ import UIKit
 class CartViewController: UITableViewController {
     
     private let shoppingCartManager = ShoppingCartManager.shared
-    var cart: [ProductItem] = []
-    var editingCell: UITableViewCell?
-    var titleFooter: String {
+    private var cart: [ProductItem] = [] {
+        didSet {
+            let hidde = !cart.isEmpty
+            backgroundView.isHidden = hidde
+            self.navigationController?.setNavigationBarHidden(!hidde, animated: false)
+        }
+    }
+    private var editingCell: UITableViewCell?
+    private var titleFooter: String {
         let total = cart.reduce(into: 0) { partialResult, ProductItem in
             partialResult += ProductItem.getTotalPrice()
         }
-        return "Итого на сумму \(total) рублей"
+        return cart.isEmpty ? "" : "Итого на сумму \(total) рублей"
     }
+    private let backgroundView = UIView()
 
     override func viewDidLoad() {
         
         super.viewDidLoad()
         loadData()
+        setBackground()
     }
     
     // MARK: - Table view data source
@@ -67,6 +75,7 @@ class CartViewController: UITableViewController {
         loadData()
         tableView.reloadData()
     }
+    
     @IBAction func createOrderButtonPress() {
         shoppingCartManager.createOrder()
     }
@@ -141,4 +150,31 @@ class CartViewController: UITableViewController {
         stepper.setDecrementImage(decrementImage, for: .normal)
         return stepper
     }
+    
+    private func setBackground() {
+        
+        let width = UIScreen.main.bounds.size.width
+        let height = UIScreen.main.bounds.size.height
+        
+        backgroundView.frame = CGRect(x: 0, y: 0, width: width, height: height)
+    
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: height / 2))
+        label.text = "Ваша корзина пустая"
+        label.textColor = .lightGray
+        label.font = UIFont(name: "Helvetica Neue", size: 20)
+        label.textAlignment = .center
+        
+        let imageViewBackground = UIImageView(frame: CGRect(x: width / 4, y: height / 4, width: width / 2, height: height / 2))
+        imageViewBackground.image = UIImage(named: "EmptyCart")?.withTintColor(.lightGray)
+        imageViewBackground.contentMode = .scaleAspectFit
+        imageViewBackground.contentScaleFactor = 0.5
+        
+        backgroundView.addSubview(label)
+        backgroundView.addSubview(imageViewBackground)
+        
+        view.addSubview(backgroundView)
+        view.sendSubviewToBack(backgroundView)
+        }
 }
+
+
