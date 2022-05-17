@@ -49,4 +49,9 @@ class AuthManager {
     func getUsersInfo() -> [User] {
         users
     }
+    
+    /// Поиск пользователя по логину
+    func findUserBy(login: String) -> User? {
+        users.first(where: { $0.login == login })
+    }
 }
