@@ -102,7 +102,6 @@
 			isa = PBXGroup;
 			children = (
 				63BE35B2282ABEA200DE27E2 /* AuthViewController.swift */,
-				E1ED5F092832583400D10320 /* CartCell.swift */,
 				E114785928310D3900734A96 /* CartViewController.swift */,
 			);
 			path = Controllers;
@@ -133,6 +132,7 @@
 				63BB91E8282BE414000642C0 /* ProductItem.swift */,
 				63BB91EA282BE496000642C0 /* Order.swift */,
 				63BB91F0282BFEC8000642C0 /* User.swift */,
+				E1ED5F092832583400D10320 /* CartCell.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";

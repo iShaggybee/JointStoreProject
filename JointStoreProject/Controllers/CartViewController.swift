@@ -9,53 +9,52 @@ import UIKit
 
 class CartViewController: UITableViewController {
     
+    private let shoppingCartManager = ShoppingCartManager.shared
     var cart: [ProductItem] = []
     var editingCell: UITableViewCell?
     var titleFooter: String {
         let total = cart.reduce(into: 0) { partialResult, ProductItem in
             partialResult += ProductItem.getTotalPrice()
         }
-        
         return "Итого на сумму \(total) рублей"
     }
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         loadData()
-        
     }
     
-    
-
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cart.count
+        cart.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cartCell", for: indexPath) as! CartCell
         setupCell(for: cell, with: cart[indexPath.row])
         return cell
     }
 
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
+        true
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
         if let lastCell = editingCell, editingCell != cell {
             lastCell.setEditing(false, animated: true)
         }
         cell.setEditing(!cell.isEditing, animated: true)
         editingCell = cell
-        
     }
     
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        return titleFooter
+        titleFooter
     }
     
     override func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
@@ -64,20 +63,21 @@ class CartViewController: UITableViewController {
     }
 
     @IBAction func trashButtonPress(_ sender: UIBarButtonItem) {
-        ShoppingCartManager.shared.clearShoppingCart()
+        shoppingCartManager.clearShoppingCart()
         loadData()
         tableView.reloadData()
     }
     @IBAction func createOrderButtonPress() {
-        ShoppingCartManager.shared.createOrder()
+        shoppingCartManager.createOrder()
     }
     
     @objc func stepperPress(sender:UIStepper) {
+       
         guard let indexPath = tableView.indexPathForSelectedRow else {return}
         guard let cell = tableView.cellForRow(at: indexPath) as? CartCell else { return }
         let productItem = cart[indexPath.row]
         cell.countLabel.layer.add(getAnimation(positive: productItem.count < Int(sender.value)), forKey: nil)
-        ShoppingCartManager.shared.changeCountProduct(name: productItem.product.name, by: Int(sender.value))
+        shoppingCartManager.changeCountProduct(name: productItem.product.name, by: Int(sender.value))
         productItem.count = Int(sender.value) //для тестирования
 
         setupCell(for: cell, with: productItem)
@@ -85,9 +85,7 @@ class CartViewController: UITableViewController {
     }
     
     private func loadData() {
-        //для тестирования
-        cart = ShoppingCartManager.shared.getAllProducts()
-        //cart = ShoppingCartManager.shared.getProducts()
+        cart = shoppingCartManager.getProducts()
     }
     
     private func updateFooter() {
@@ -113,10 +111,10 @@ class CartViewController: UITableViewController {
         let stepper = getStepper()
         stepper.value = Double(productItem.count)
         cell.editingAccessoryView = stepper
-        
     }
     
     private func getAnimation(positive: Bool) -> CASpringAnimation {
+        
         let animation = CASpringAnimation(keyPath: "transform.scale")
         animation.duration = 0.5
         animation.fromValue = 1
@@ -131,6 +129,7 @@ class CartViewController: UITableViewController {
     }
     
     private func getStepper() -> UIStepper {
+        
         let stepper = UIStepper()
         stepper.minimumValue = 0
         stepper.maximumValue = 99
