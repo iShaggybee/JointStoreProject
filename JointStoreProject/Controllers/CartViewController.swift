@@ -76,9 +76,10 @@ class CartViewController: UITableViewController {
         guard let indexPath = tableView.indexPathForSelectedRow else {return}
         guard let cell = tableView.cellForRow(at: indexPath) as? CartCell else { return }
         let productItem = cart[indexPath.row]
+        cell.countLabel.layer.add(getAnimation(positive: productItem.count < Int(sender.value)), forKey: nil)
         ShoppingCartManager.shared.changeCountProduct(name: productItem.product.name, by: Int(sender.value))
         productItem.count = Int(sender.value) //для тестирования
-        cell.countLabel.layer.add(getAnimation(), forKey: nil)
+
         setupCell(for: cell, with: productItem)
         updateFooter()
     }
@@ -115,11 +116,15 @@ class CartViewController: UITableViewController {
         
     }
     
-    private func getAnimation() -> CASpringAnimation {
+    private func getAnimation(positive: Bool) -> CASpringAnimation {
         let animation = CASpringAnimation(keyPath: "transform.scale")
         animation.duration = 0.5
         animation.fromValue = 1
-        animation.toValue = 1.2
+        if positive {
+            animation.toValue = 1.2
+        } else {
+            animation.toValue = 0.8
+        }
         animation.initialVelocity = 0.5
         animation.damping = 1
         return animation
