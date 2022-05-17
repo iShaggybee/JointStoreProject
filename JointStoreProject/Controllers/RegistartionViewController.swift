@@ -35,6 +35,7 @@ class RegistartionViewController: UIViewController {
                              password: passwordTextField.text ?? ""
         ) == true {
             performSegue(withIdentifier: "", sender: registerationButton)
+            print("login success")
         } else {
             setAlert(header: "Упс", body: "Кажется вы уже зарегистрированы")
         }
@@ -65,6 +66,7 @@ extension RegistartionViewController: UITextFieldDelegate {
             return true
         } else {
             registerNewAccount()
+            print("registration completed")
             return true
         }
     }

@@ -52,6 +52,7 @@ class LoginViewController: UIViewController {
                              password: passwordTextField.text ?? ""
         ) == true {
             performSegue(withIdentifier: "", sender: loginButton)
+            print("login comleted")
         } else {
             setAlert(header: "Incorrect user info", body: "Check if your username or password is correct")
         }
