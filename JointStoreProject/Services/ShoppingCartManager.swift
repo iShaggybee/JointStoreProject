@@ -89,11 +89,7 @@ class ShoppingCartManager {
     private func removeProductsForUser() {
         guard let userIndex = authManager.currentUserIndex else { return }
         
-        for (index, product) in products.enumerated() {
-            if product.userIndex == userIndex {
-                products.remove(at: index)
-            }
-        }
+        products.removeAll(where: { $0.userIndex == userIndex })
     }
     
     private func getProductItemBy(name: String) -> ProductItem? {
