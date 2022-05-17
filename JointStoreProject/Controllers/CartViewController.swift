@@ -12,9 +12,9 @@ class CartViewController: UITableViewController {
     private let shoppingCartManager = ShoppingCartManager.shared
     private var cart: [ProductItem] = [] {
         didSet {
-            let hidde = !cart.isEmpty
-            backgroundView.isHidden = hidde
-            self.navigationController?.setNavigationBarHidden(!hidde, animated: false)
+            let hidden = !cart.isEmpty
+            backgroundView.isHidden = hidden
+            self.navigationController?.setNavigationBarHidden(!hidden, animated: false)
         }
     }
     private var editingCell: UITableViewCell?
@@ -175,6 +175,15 @@ class CartViewController: UITableViewController {
         view.addSubview(backgroundView)
         view.sendSubviewToBack(backgroundView)
         }
+    
+    private func showAlert(title: String, message: String, titleButton: String) {
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let buttonController = UIAlertAction(title: titleButton, style: .default)
+        alertController.addAction(buttonController)
+        
+        present(alertController, animated: true)
+    }
 }
 
 
