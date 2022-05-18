@@ -29,7 +29,7 @@
 
 /* Begin PBXFileReference section */
 		13CCBD442834C0D000299198 /* Shop.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Shop.storyboard; sourceTree = "<group>"; };
-		13CCBD462834C14E00299198 /* ProductListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProductListViewController.swift; path = JointStoreProject/Storyboards/ProductListViewController.swift; sourceTree = SOURCE_ROOT; };
+		13CCBD462834C14E00299198 /* ProductListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProductListViewController.swift; path = JointStoreProject/Controllers/ProductListViewController.swift; sourceTree = SOURCE_ROOT; };
 		13CCBD482834C17200299198 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		13CCBD4A2834C19100299198 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		630E2C7B282E550900578D60 /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };

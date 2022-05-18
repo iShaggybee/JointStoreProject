@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,7 +13,7 @@
         <scene sceneID="DWy-Pf-fyV">
             <objects>
                 <tableViewController id="tqN-uX-HOb" customClass="ProductListViewController" customModule="JointStoreProject" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="J5R-Mz-grT">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="J5R-Mz-grT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -91,6 +92,7 @@
                                     <outlet property="productImageView" destination="aEa-zL-2oh" id="6vg-55-Fry"/>
                                     <outlet property="productNameLabel" destination="YVx-nA-rHR" id="Btj-rD-rTg"/>
                                     <outlet property="productPriceLabel" destination="0cm-Ki-aBx" id="ONY-hL-eJy"/>
+                                    <segue destination="D8S-fZ-HlV" kind="show" id="Vzc-al-AGr"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -120,6 +122,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="87O-zj-ydS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-772" y="106"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="7KC-xm-cDc">
+            <objects>
+                <viewController id="D8S-fZ-HlV" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zQM-lt-10b">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="ApM-Lj-JHY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Rct-pH-nPq"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y3q-l7-tty" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="831" y="106"/>
         </scene>
     </scenes>
     <resources>

@@ -32,14 +32,14 @@ class ProductListViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "productCell", for: indexPath) as! ProductCell
         let product = products[indexPath.row]
         
+        cell.selectionStyle = .none
         cell.productImageView.image = UIImage(named: "default_product_image")
         cell.productNameLabel.text = product.name
         cell.productDescriptionLabel.text = product.description
         cell.productPriceLabel.text = "$\(product.price)"
         cell.addToCart = {
             ShoppingCartManager.shared.addProductItem(product: product, count: 1)
-            print("Added to cart: \(product.name)")
-//            print(ShoppingCartManager.shared.products)
+            print("Added to cart: \(product.name)") // Удалить
             self.showAddedToCartAlert(product)
         }
         
