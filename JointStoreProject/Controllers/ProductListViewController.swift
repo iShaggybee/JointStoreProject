@@ -8,8 +8,12 @@
 import UIKit
 
 class ProductListViewController: UITableViewController {
-    
     private let products = StoreManager.shared.products.shuffled()
+    
+    @IBAction func searchButtonPressed(_ sender: Any) {
+        showSearchAlert()
+    }
+    
 
     // MARK: - Table view data source
 
@@ -46,6 +50,17 @@ class ProductListViewController: UITableViewController {
         let goToCartAction = UIAlertAction(title: "Корзина", style: .default)
         alert.addAction(backToStoreAction)
         alert.addAction(goToCartAction)
+        present(alert, animated: true)
+    }
+    
+    func showSearchAlert() {
+        let alert = UIAlertController(title: "Найти в каталоге", message: "", preferredStyle: .alert)
+        let searchAction = UIAlertAction(title: "Найти", style: .default)
+        let cancelAction = UIAlertAction(title: "Отмена", style: .default)
+        
+        alert.addTextField()
+        alert.addAction(searchAction)
+        alert.addAction(cancelAction)
         present(alert, animated: true)
     }
 
