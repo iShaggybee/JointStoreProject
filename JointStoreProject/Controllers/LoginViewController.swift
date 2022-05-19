@@ -9,53 +9,39 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
-    let authManager = AuthManager.shared
-    
     @IBOutlet var loginTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var loginButton: UIButton!
     
+    let authManager = AuthManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.loginTextField.delegate = self
         self.passwordTextField.delegate = self
-        
     }
     
     @IBAction func authorizing() {
-        logginIn()
+        login()
     }
     
     @IBAction func remindInfo() {
         let users = authManager.getUsersInfo()
-        let userIndex = users.firstIndex(where: {$0.login == loginTextField.text})
+       
+        if loginTextField.hasText == false {
+            setAlert(header: "Вот дежурные данные",
+                     body: "Логин: \(users[0].login), пароль: \(users[0].password)")
+        }
         
-        switch userIndex {
-            
-        case .none:
+        guard let userIndex = users.firstIndex(where: {$0.login == loginTextField.text}) else {
             setAlert(header: "Упс",
                      body: "Такого пользователя нет. Попробуйте зарегистрироваться")
-        case .some(_):
-            let userInfo = users[userIndex ?? 0]
-            if userIndex == 0 {
-                setAlert(header: "Вот дежурные данные",
-                         body: "Логин: \(userInfo.login), пароль: \(userInfo.password)")
-            } else {
-                setAlert(header: "Ничего страшгого,\(userInfo.login)", body: "Ваш пароль: \(userInfo.password)")
-            }
+            return
         }
-    }
-    
-    func logginIn() {
-        if authManager.login(login: loginTextField.text ?? "",
-                             password: passwordTextField.text ?? ""
-        ) == true {
-            performSegue(withIdentifier: "", sender: loginButton)
-            print("login comleted")
-        } else {
-            setAlert(header: "Incorrect user info", body: "Check if your username or password is correct")
-        }
+        
+        let userInfo = users[userIndex]
+        setAlert(header: "Ничего страшгого,\(userInfo.login)", body: "Ваш пароль: \(userInfo.password)")
+            
     }
     
     func setAlert(header: String, body: String) {
@@ -64,6 +50,17 @@ class LoginViewController: UIViewController {
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func login() {
+        if authManager.login(login: loginTextField.text ?? "",
+                             password: passwordTextField.text ?? ""
+        ) {
+            performSegue(withIdentifier: "", sender: loginButton)
+            print("login comleted")
+        } else {
+            setAlert(header: "Упс", body: "Проверьте правильность введенных данных")
+        }
     }
 }
 
@@ -79,7 +76,7 @@ extension LoginViewController: UITextFieldDelegate {
             passwordTextField.becomeFirstResponder()
             return true
         } else {
-            logginIn()
+            login()
             return true
         }
     }

@@ -9,11 +9,11 @@ import UIKit
 
 class RegistartionViewController: UIViewController {
     
-    let authManager = AuthManager.shared
-    
     @IBOutlet var loginTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var registerationButton: UIButton!
+    
+    let authManager = AuthManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,21 +24,23 @@ class RegistartionViewController: UIViewController {
     }
     
     @IBAction func registerNewAccount() {
-       if authManager.addUser(login: loginTextField.text ?? "client",
-                              password: passwordTextField.text ?? "qwerty") == true {
-           logginIn()
+       if loginTextField.hasText == false || passwordTextField.hasText == false {
+           setAlert(header: "Упс", body: "Проверьте заполенение всех полей")
+       } else if authManager.addUser(login: loginTextField.text ?? "client",
+                              password: passwordTextField.text ?? "qwerty") {
+           login()
+       } else {
+           setAlert(header: "Упс", body: "Кажется вы уже зарегистрированы")
        }
     }
     
-    func logginIn() {
+    func login() {
         if authManager.login(login: loginTextField.text ?? "",
                              password: passwordTextField.text ?? ""
-        ) == true {
+        ) {
             performSegue(withIdentifier: "", sender: registerationButton)
             print("login success")
-        } else {
-            setAlert(header: "Упс", body: "Кажется вы уже зарегистрированы")
-        }
+        } 
     }
     
     func setAlert(header: String, body: String) {
