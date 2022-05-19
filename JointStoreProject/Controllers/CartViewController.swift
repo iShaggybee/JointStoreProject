@@ -83,16 +83,40 @@ class CartViewController: UITableViewController {
     @objc func stepperPress(sender:UIStepper) {
        
         guard let indexPath = tableView.indexPathForSelectedRow else {return}
-        guard let cell = tableView.cellForRow(at: indexPath) as? CartCell else { return }
-        let productItem = cart[indexPath.row]
-        cell.countLabel.layer.add(getAnimation(positive: productItem.count < Int(sender.value)), forKey: nil)
-        shoppingCartManager.changeCountProduct(name: productItem.product.name, by: Int(sender.value))
-        productItem.count = Int(sender.value) //для тестирования
+        let titleYes = "Да, удалить"
+        let titleNo = "Нет, оставить"
+        if sender.value == 0 {
+            showAlert(title: "Минуточку!", message: "Может тогда совсем убрать этот товар из корзины?", titleButton: [titleYes, titleNo], clouser: {actionFromAlert in
+                if actionFromAlert.title == titleYes {
+                    self.changeCountToZero(for: indexPath)
+                    self.tableView.deleteRows(at: [indexPath], with: .middle)
+                } else {
+                    sender.value = 1
+                }
+            })
+        } else {
+            self.changeCount(for: indexPath, newCount: Int(sender.value))
+        }
+    }
+    
+    private func changeCount(for index: IndexPath, newCount: Int) {
 
+        guard let cell = tableView.cellForRow(at: index) as? CartCell else { return }
+        let productItem = cart[index.row]
+        cell.countLabel.layer.add(getAnimation(positive: productItem.count < newCount), forKey: nil)
+        shoppingCartManager.changeCountProduct(name: productItem.product.name, by: newCount)
+        productItem.count = newCount // Мне кажется эта строчка лишняя
         setupCell(for: cell, with: productItem)
         updateFooter()
     }
-    
+
+    private func changeCountToZero(for index: IndexPath) {
+
+        let productItem = cart[index.row]
+        shoppingCartManager.removeProductItem(product: productItem.product)
+        updateFooter()
+    }
+
     private func loadData() {
         cart = shoppingCartManager.getProducts()
     }
@@ -114,7 +138,8 @@ class CartViewController: UITableViewController {
         
         let currentProduct = productItem.product
         cell.productTitleLabel.text = currentProduct.name
-        cell.priceLabel.text = String(currentProduct.price)
+        cell.priceLabel.text = "\(currentProduct.price)" // Исправить после Merge с Main
+//        cell.priceLabel.text = "\(currentProduct.price)/\(currentProduct.unit ?? "")"
         cell.countLabel.text = "x \(productItem.count)"
         cell.totalLabel.text = "\(productItem.getTotalPrice()) р."
         let stepper = getStepper()
@@ -176,12 +201,15 @@ class CartViewController: UITableViewController {
         view.sendSubviewToBack(backgroundView)
         }
     
-    private func showAlert(title: String, message: String, titleButton: String) {
+        func showAlert(title: String, message: String, titleButton: [String], clouser: @escaping (UIAlertAction) -> ()) {
         
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let buttonController = UIAlertAction(title: titleButton, style: .default)
-        alertController.addAction(buttonController)
-        
+        for titleButton in titleButton {
+            let buttonController = UIAlertAction(title: titleButton, style: .default) { action in
+                    clouser(action)
+            }
+            alertController.addAction(buttonController)
+        }
         present(alertController, animated: true)
     }
 }
