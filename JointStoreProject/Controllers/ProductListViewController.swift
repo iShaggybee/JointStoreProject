@@ -12,6 +12,7 @@ class ProductListViewController: UITableViewController {
     @IBOutlet var backToFullListButton: UIBarButtonItem!
     
     private var products = StoreManager.shared.products
+    private let shoppingCartManager = ShoppingCartManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,9 +28,9 @@ class ProductListViewController: UITableViewController {
         self.backToFullListButton.tintColor = UIColor.clear
         DispatchQueue.main.async { self.tableView.reloadData() }
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         products.count
     }
@@ -44,24 +45,23 @@ class ProductListViewController: UITableViewController {
         cell.productDescriptionLabel.text = product.description
         cell.productPriceLabel.text = "$\(product.price)"
         cell.addToCart = {
-            ShoppingCartManager.shared.addProductItem(product: product, count: 1)
-            print("Added to cart: \(product.name)") // Удалить
+            self.shoppingCartManager.addProductItem(product: product, count: 1)
             self.showAddedToCartAlert(product)
         }
         
         return cell
     }
-
+    
     // MARK: - Navigation
-
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     guard let productVC = segue.destination as? ProductViewController else { return }
-     guard let indexPath = tableView.indexPathForSelectedRow else { return }
-     let product = products[indexPath.row]
-     
-     productVC.product = product
-     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let productVC = segue.destination as? ProductViewController else { return }
+        guard let indexPath = tableView.indexPathForSelectedRow else { return }
+        let product = products[indexPath.row]
+        
+        productVC.product = product
+    }
+    
 }
 
 extension UITextField {
@@ -120,3 +120,4 @@ extension ProductListViewController {
         present(alert, animated: true)
     }
 }
+
