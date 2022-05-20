@@ -117,12 +117,20 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Каталог" id="Fk4-pp-K7f">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="magnifyingglass" catalog="system" id="IZc-db-8HB">
+                        <barButtonItem key="leftBarButtonItem" image="arrow.uturn.backward" catalog="system" id="bfL-qO-Qkk">
+                            <connections>
+                                <action selector="backToFullListButtonPressed:" destination="tqN-uX-HOb" id="YAI-nW-LbQ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="IZc-db-8HB">
                             <connections>
                                 <action selector="searchButtonPressed:" destination="tqN-uX-HOb" id="AcH-xA-k0s"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="backToFullListButton" destination="bfL-qO-Qkk" id="FGr-R7-Ahu"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GKT-l4-Qde" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -309,7 +317,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="arrow.uturn.backward" catalog="system" width="128" height="112"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
