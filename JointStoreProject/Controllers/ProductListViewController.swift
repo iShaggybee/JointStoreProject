@@ -89,8 +89,8 @@ extension ProductListViewController {
     }
     
     func showSearchAlert() {
-        let alert = UIAlertController(title: "Найти в каталоге", message: "", preferredStyle: .alert)
-        let searchAction = UIAlertAction(title: "Найти", style: .default)
+        let alert = UIAlertController(title: "Поиск", message: .none, preferredStyle: .alert)
+        let searchAction = UIAlertAction(title: "Готово", style: .default)
         let cancelAction = UIAlertAction(title: "Отмена", style: .default) { _ in
             self.products = StoreManager.shared.products
             self.title = "Каталог"
