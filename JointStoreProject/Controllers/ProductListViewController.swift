@@ -8,17 +8,29 @@
 import UIKit
 
 class ProductListViewController: UITableViewController {
+    
+    @IBOutlet var backToFullListButton: UIBarButtonItem!
+    
     private var products = StoreManager.shared.products
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        backToFullListButton.tintColor = UIColor.clear
+    }
     
     @IBAction func searchButtonPressed(_ sender: Any) {
         showSearchAlert()
     }
-    
+    @IBAction func backToFullListButtonPressed(_ sender: Any) {
+        products = StoreManager.shared.products
+        title = "Каталог"
+        self.backToFullListButton.tintColor = UIColor.clear
+        DispatchQueue.main.async { self.tableView.reloadData() }
+    }
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         products.count
     }
     
@@ -38,48 +50,6 @@ class ProductListViewController: UITableViewController {
         }
         
         return cell
-    }
-    
-    func showAddedToCartAlert(_ product: Product) {
-        
-        let title = "Добавлено"
-        let message = "Продукт '\(product.name)' добавлен в корзину. Продолжить покупки или перейти к корзине?"
-        
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let backToStoreAction = UIAlertAction(title: "Продолжить", style: .default)
-        let goToCartAction = UIAlertAction(title: "Корзина", style: .default)
-        alert.addAction(backToStoreAction)
-        alert.addAction(goToCartAction)
-        present(alert, animated: true)
-    }
-    
-    func showSearchAlert() {
-        let alert = UIAlertController(title: "Найти в каталоге", message: "", preferredStyle: .alert)
-        let searchAction = UIAlertAction(title: "Найти", style: .default)
-        let cancelAction = UIAlertAction(title: "Отмена", style: .default) { _ in
-            self.products = StoreManager.shared.products
-            self.title = "Каталог"
-            DispatchQueue.main.async { self.tableView.reloadData() }
-        }
-        
-        alert.addTextField(configurationHandler: {(textField: UITextField) in
-            textField.clearButtonMode = .whileEditing
-            textField.setOnTextChangeListener {
-                if textField.text != "" && !textField.text!.isEmpty {
-                    self.products = StoreManager.shared.searchProducts(by: textField.text!)
-                    self.title = "Поиск: \(textField.text!)"
-                    DispatchQueue.main.async { self.tableView.reloadData() }
-                } else {
-                    self.products = StoreManager.shared.products
-                    self.title = "Каталог"
-                    DispatchQueue.main.async { self.tableView.reloadData() }
-                }
-            }
-        })
-        
-        alert.addAction(searchAction)
-        alert.addAction(cancelAction)
-        present(alert, animated: true)
     }
 
     // MARK: - Navigation
@@ -101,5 +71,52 @@ extension UITextField {
             onTextChanged()
             
         }, for: .editingChanged)
+    }
+}
+
+extension ProductListViewController {
+    func showAddedToCartAlert(_ product: Product) {
+        
+        let title = "Добавлено"
+        let message = "Продукт '\(product.name)' добавлен в корзину. Продолжить покупки или перейти к корзине?"
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let backToStoreAction = UIAlertAction(title: "Продолжить", style: .default)
+        let goToCartAction = UIAlertAction(title: "Корзина", style: .default)
+        alert.addAction(backToStoreAction)
+        alert.addAction(goToCartAction)
+        present(alert, animated: true)
+    }
+    
+    func showSearchAlert() {
+        let alert = UIAlertController(title: "Найти в каталоге", message: "", preferredStyle: .alert)
+        let searchAction = UIAlertAction(title: "Найти", style: .default)
+        let cancelAction = UIAlertAction(title: "Отмена", style: .default) { _ in
+            self.products = StoreManager.shared.products
+            self.title = "Каталог"
+            self.backToFullListButton.tintColor = UIColor.clear
+            DispatchQueue.main.async { self.tableView.reloadData() }
+        }
+        
+        alert.addTextField(configurationHandler: {(textField: UITextField) in
+            textField.clearButtonMode = .whileEditing
+            textField.setOnTextChangeListener {
+                if textField.text != "" && !textField.text!.isEmpty {
+                    self.products = StoreManager.shared.searchProducts(by: textField.text!)
+                    self.title = "Поиск: \(textField.text!)"
+                    self.backToFullListButton.tintColor = UIColor.systemBlue
+                    DispatchQueue.main.async { self.tableView.reloadData() }
+                } else {
+                    self.products = StoreManager.shared.products
+                    self.title = "Каталог"
+                    self.backToFullListButton.tintColor = UIColor.clear
+                    DispatchQueue.main.async { self.tableView.reloadData() }
+                }
+            }
+        })
+        
+        alert.addAction(searchAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true)
     }
 }
