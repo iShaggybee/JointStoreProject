@@ -8,17 +8,18 @@
 import UIKit
 
 class ProductViewController: UIViewController {
-
+    
     @IBOutlet var productImageView: UIImageView!
     @IBOutlet var productNameLabel: UILabel!
     @IBOutlet var productPriceLabel: UILabel!
     @IBOutlet var productDescriptionLabel: UILabel!
     
     var product: Product!
+    private let shoppingCartManager = ShoppingCartManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         productImageView.image = UIImage(named: "default_product_image")
         productNameLabel.text = product.name
         productPriceLabel.text = "$\(product.price)"
@@ -26,7 +27,7 @@ class ProductViewController: UIViewController {
     }
     
     @IBAction func addToCartButtonPressed() {
-        ShoppingCartManager.shared.addProductItem(product: product, count: 1)
+        shoppingCartManager.addProductItem(product: product, count: 1)
         print("Added to cart: \(product.name)") // Удалить
         self.showAddedToCartAlert(product)
     }
@@ -43,5 +44,6 @@ class ProductViewController: UIViewController {
         alert.addAction(goToCartAction)
         present(alert, animated: true)
     }
-
+    
 }
+
