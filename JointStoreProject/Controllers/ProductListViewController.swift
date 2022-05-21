@@ -99,7 +99,9 @@ extension ProductListViewController {
         }
         
         alert.addTextField(configurationHandler: {(textField: UITextField) in
+            textField.delegate = self
             textField.clearButtonMode = .whileEditing
+            textField.returnKeyType = .done
             textField.setOnTextChangeListener {
                 if textField.text != "" && !textField.text!.isEmpty {
                     self.products = StoreManager.shared.searchProducts(by: textField.text!)
@@ -118,5 +120,12 @@ extension ProductListViewController {
         alert.addAction(searchAction)
         alert.addAction(cancelAction)
         present(alert, animated: true)
+    }
+}
+
+extension ProductListViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.dismiss(animated: true)
+        return true
     }
 }
