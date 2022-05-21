@@ -73,6 +73,6 @@ class StoreManager {
     func searchProducts(by search: String) -> [Product] {
         let trimmed = search.trimmingCharacters(in: .whitespacesAndNewlines)
         
-        return products.filter { $0.name.contains(trimmed) }
+        return products.filter { $0.name.lowercased().contains(trimmed.lowercased()) }
     }
 }
