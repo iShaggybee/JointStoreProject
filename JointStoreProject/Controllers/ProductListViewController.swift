@@ -43,7 +43,7 @@ class ProductListViewController: UITableViewController {
         cell.productImageView.image = UIImage(named: product.name)
         cell.productNameLabel.text = product.name
         cell.productDescriptionLabel.text = product.description
-        cell.productPriceLabel.text = "$\(product.price)"
+        cell.productPriceLabel.text = "₽\(product.price)"
         cell.addToCart = {
             self.shoppingCartManager.addProductItem(product: product, count: 1)
             self.showAddedToCartAlert(product)
