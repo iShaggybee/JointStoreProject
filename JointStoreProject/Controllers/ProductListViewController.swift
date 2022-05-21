@@ -40,7 +40,7 @@ class ProductListViewController: UITableViewController {
         let product = products[indexPath.row]
         
         cell.selectionStyle = .none
-        cell.productImageView.image = UIImage(named: "default_product_image")
+        cell.productImageView.image = UIImage(named: product.name)
         cell.productNameLabel.text = product.name
         cell.productDescriptionLabel.text = product.description
         cell.productPriceLabel.text = "$\(product.price)"
@@ -120,4 +120,3 @@ extension ProductListViewController {
         present(alert, animated: true)
     }
 }
-

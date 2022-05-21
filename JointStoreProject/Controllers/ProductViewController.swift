@@ -20,7 +20,7 @@ class ProductViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        productImageView.image = UIImage(named: "default_product_image")
+        productImageView.image = UIImage(named: product.name)
         productNameLabel.text = product.name
         productPriceLabel.text = "$\(product.price)"
         productDescriptionLabel.text = product.description
