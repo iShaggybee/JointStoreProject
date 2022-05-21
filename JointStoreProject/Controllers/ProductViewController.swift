@@ -28,7 +28,6 @@ class ProductViewController: UIViewController {
     
     @IBAction func addToCartButtonPressed() {
         shoppingCartManager.addProductItem(product: product, count: 1)
-        print("Added to cart: \(product.name)") // Удалить
         self.showAddedToCartAlert(product)
     }
     
