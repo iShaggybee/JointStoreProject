@@ -7,8 +7,11 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+protocol LoginViewControllerDelegate {
+    func login(login: String, password: String)
+}
 
+class LoginViewController: UIViewController {
     @IBOutlet var loginTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var loginButton: UIButton!
@@ -17,8 +20,17 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.loginTextField.delegate = self
         self.passwordTextField.delegate = self
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let registrationVC = segue.destination as? RegistartionViewController else {
+            return
+        }
+        
+        registrationVC.delegate = self
     }
     
     @IBAction func authorizing() {
@@ -35,16 +47,16 @@ class LoginViewController: UIViewController {
         
         guard let userIndex = users.firstIndex(where: {$0.login == loginTextField.text}) else {
             setAlert(header: "Упс",
-                     body: "Такого пользователя нет. Попробуйте зарегистрироваться")
+                     body: "Пользователя с логином \(loginTextField.text?.uppercased() ?? "") не существует")
             return
         }
         
         let userInfo = users[userIndex]
-        setAlert(header: "Ничего страшгого,\(userInfo.login)", body: "Ваш пароль: \(userInfo.password)")
+        setAlert(header: "Ничего страшного, \(userInfo.login)", body: "Ваш пароль: \(userInfo.password)")
             
     }
     
-    func setAlert(header: String, body: String) {
+   private func setAlert(header: String, body: String) {
         let alert = UIAlertController(title: header,
                                       message: body,
                                       preferredStyle: .alert)
@@ -56,8 +68,7 @@ class LoginViewController: UIViewController {
         if authManager.login(login: loginTextField.text ?? "",
                              password: passwordTextField.text ?? ""
         ) {
-            performSegue(withIdentifier: "", sender: loginButton)
-            print("login comleted")
+//            performSegue(withIdentifier: "", sender: loginButton)
         } else {
             setAlert(header: "Упс", body: "Проверьте правильность введенных данных")
         }
@@ -65,7 +76,6 @@ class LoginViewController: UIViewController {
 }
 
 extension LoginViewController: UITextFieldDelegate {
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super .touchesBegan(touches, with: event)
         view.endEditing(true)
@@ -74,10 +84,20 @@ extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == loginTextField {
             passwordTextField.becomeFirstResponder()
+            
             return true
         } else {
             login()
+            
             return true
+        }
+    }
+}
+
+extension LoginViewController: LoginViewControllerDelegate {
+    func login(login: String, password: String) {
+        if !authManager.login(login: login, password: password) {
+            setAlert(header: "Упс", body: "Не удалось авторизоваться")
         }
     }
 }

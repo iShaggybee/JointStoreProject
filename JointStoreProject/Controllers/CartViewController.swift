@@ -8,7 +8,6 @@
 import UIKit
 
 class CartViewController: UITableViewController {
-    
     private let shoppingCartManager = ShoppingCartManager.shared
     private var cart: [ProductItem] = [] {
         didSet {
@@ -27,7 +26,6 @@ class CartViewController: UITableViewController {
     private let backgroundView = UIView()
 
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         loadData()
         setBackground()
@@ -39,7 +37,6 @@ class CartViewController: UITableViewController {
         cart.count
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cartCell", for: indexPath) as! CartCell
@@ -81,7 +78,6 @@ class CartViewController: UITableViewController {
     }
     
     @objc func stepperPress(sender:UIStepper) {
-       
         guard let indexPath = tableView.indexPathForSelectedRow else {return}
         let titleYes = "Да, удалить"
         let titleNo = "Нет, оставить"
@@ -100,7 +96,6 @@ class CartViewController: UITableViewController {
     }
     
     private func changeCount(for index: IndexPath, newCount: Int) {
-
         guard let cell = tableView.cellForRow(at: index) as? CartCell else { return }
         let productItem = cart[index.row]
         cell.countLabel.layer.add(getAnimation(positive: productItem.count < newCount), forKey: nil)
@@ -111,7 +106,6 @@ class CartViewController: UITableViewController {
     }
 
     private func changeCountToZero(for index: IndexPath) {
-
         let productItem = cart[index.row]
         shoppingCartManager.removeProductItem(product: productItem.product)
         updateFooter()
@@ -122,24 +116,20 @@ class CartViewController: UITableViewController {
     }
     
     private func updateFooter() {
-        
         guard let footerView = tableView.footerView(forSection: 0) else {return}
         updateFooterView(footerView: footerView)
     }
     
     private func updateFooterView(footerView: UITableViewHeaderFooterView) {
-        
         var defContent = footerView.defaultContentConfiguration()
         defContent.text = titleFooter
         footerView.contentConfiguration = defContent
     }
     
     private func setupCell(for cell: CartCell, with productItem: ProductItem) {
-        
         let currentProduct = productItem.product
         cell.productTitleLabel.text = currentProduct.name
-        cell.priceLabel.text = "\(currentProduct.price)" // Исправить после Merge с Main
-//        cell.priceLabel.text = "\(currentProduct.price)/\(currentProduct.unit ?? "")"
+        cell.priceLabel.text = "\(currentProduct.price)/\(currentProduct.unit.rawValue)"
         cell.countLabel.text = "x \(productItem.count)"
         cell.totalLabel.text = "\(productItem.getTotalPrice()) р."
         let stepper = getStepper()
@@ -148,22 +138,16 @@ class CartViewController: UITableViewController {
     }
     
     private func getAnimation(positive: Bool) -> CASpringAnimation {
-        
         let animation = CASpringAnimation(keyPath: "transform.scale")
         animation.duration = 0.5
         animation.fromValue = 1
-        if positive {
-            animation.toValue = 1.2
-        } else {
-            animation.toValue = 0.8
-        }
+        animation.toValue = positive ? 1.2 : 0.8
         animation.initialVelocity = 0.5
         animation.damping = 1
         return animation
     }
     
     private func getStepper() -> UIStepper {
-        
         let stepper = UIStepper()
         stepper.minimumValue = 0
         stepper.maximumValue = 99
@@ -177,7 +161,6 @@ class CartViewController: UITableViewController {
     }
     
     private func setBackground() {
-        
         let width = UIScreen.main.bounds.size.width
         let height = UIScreen.main.bounds.size.height
         
@@ -199,10 +182,9 @@ class CartViewController: UITableViewController {
         
         view.addSubview(backgroundView)
         view.sendSubviewToBack(backgroundView)
-        }
+    }
     
-        func showAlert(title: String, message: String, titleButton: [String], clouser: @escaping (UIAlertAction) -> ()) {
-        
+    private func showAlert(title: String, message: String, titleButton: [String], clouser: @escaping (UIAlertAction) -> ()) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         for titleButton in titleButton {
             let buttonController = UIAlertAction(title: titleButton, style: .default) { action in

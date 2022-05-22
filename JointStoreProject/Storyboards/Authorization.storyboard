@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,28 +13,22 @@
             <objects>
                 <viewController id="Y6W-OH-hqX" customClass="LoginViewController" customModule="JointStoreProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="rRb-IC-obx">
-                                <rect key="frame" x="82.5" y="204" width="210.5" height="259"/>
+                                <rect key="frame" x="55" y="154.5" width="210.5" height="259"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="9ff-rX-gJB">
                                         <rect key="frame" x="3" y="0.0" width="204" height="141"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Логин" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bXL-mv-zWx">
                                                 <rect key="frame" x="0.0" y="0.0" width="204" height="34"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="204" id="jqI-17-kNH"/>
-                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EoD-K6-8k9">
                                                 <rect key="frame" x="0.0" y="55" width="204" height="34"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="204" id="JaW-oV-npB"/>
-                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" smartInsertDeleteType="no"/>
                                             </textField>
@@ -79,7 +73,7 @@
                                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
                                                 <connections>
-                                                    <segue destination="WZ2-3b-wax" kind="presentation" id="kki-iJ-B7q"/>
+                                                    <segue destination="WZ2-3b-wax" kind="show" identifier="" id="5TM-VH-MT4"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -94,6 +88,7 @@
                             <constraint firstItem="rRb-IC-obx" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="tYu-DD-ZUe"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="nOR-ac-gDZ"/>
                     <connections>
                         <outlet property="loginButton" destination="07l-em-0sQ" id="sei-bi-Jqu"/>
                         <outlet property="loginTextField" destination="bXL-mv-zWx" id="DcH-WQ-Nhi"/>
@@ -102,27 +97,24 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="20" y="79.610194902548727"/>
+            <point key="canvasLocation" x="1016.25" y="79.225352112676063"/>
         </scene>
         <!--Registartion View Controller-->
         <scene sceneID="Kof-Tg-lFS">
             <objects>
                 <viewController id="WZ2-3b-wax" customClass="RegistartionViewController" customModule="JointStoreProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aIS-yf-JzM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="mW7-jX-KXx">
-                                <rect key="frame" x="78" y="187" width="219" height="155"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="mW7-jX-KXx">
+                                <rect key="frame" x="50.5" y="196.5" width="219" height="155"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="uy5-m8-RPa">
                                         <rect key="frame" x="0.0" y="0.0" width="219" height="89"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Придумайте логин" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UCh-vQ-2Jz">
                                                 <rect key="frame" x="0.0" y="0.0" width="219" height="34"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="219" id="1JS-j9-N5D"/>
-                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                             </textField>
@@ -154,6 +146,10 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gj8-OE-f5T"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="mW7-jX-KXx" firstAttribute="centerY" secondItem="aIS-yf-JzM" secondAttribute="centerY" id="20P-Be-DOU"/>
+                            <constraint firstItem="mW7-jX-KXx" firstAttribute="centerX" secondItem="aIS-yf-JzM" secondAttribute="centerX" id="QE9-f0-Yom"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="loginTextField" destination="UCh-vQ-2Jz" id="Nla-xc-xiO"/>
@@ -163,7 +159,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KYN-25-HwG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="681" y="80"/>
+            <point key="canvasLocation" x="1966.875" y="-305.28169014084506"/>
         </scene>
     </scenes>
     <resources>
