@@ -21,6 +21,9 @@
 		63BE35B6282ABEA200DE27E2 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63BE35B4282ABEA200DE27E2 /* Auth.storyboard */; };
 		63BE35B8282ABEA300DE27E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63BE35B7282ABEA300DE27E2 /* Assets.xcassets */; };
 		63BE35BB282ABEA300DE27E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63BE35B9282ABEA300DE27E2 /* LaunchScreen.storyboard */; };
+		E11478582831072100734A96 /* ShoppingCart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E11478572831072100734A96 /* ShoppingCart.storyboard */; };
+		E114785A28310D3900734A96 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E114785928310D3900734A96 /* CartViewController.swift */; };
+		E1ED5F0A2832583400D10320 /* CartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ED5F092832583400D10320 /* CartCell.swift */; };
 		FED5FEC3282EB9560073C991 /* Authorization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FED5FEC2282EB9560073C991 /* Authorization.storyboard */; };
 		FED5FEC5283157F40073C991 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED5FEC4283157F40073C991 /* LoginViewController.swift */; };
 		FED5FEC72831583A0073C991 /* RegistartionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED5FEC62831583A0073C991 /* RegistartionViewController.swift */; };
@@ -43,6 +46,9 @@
 		63BE35B7282ABEA300DE27E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63BE35BA282ABEA300DE27E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63BE35BC282ABEA300DE27E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E11478572831072100734A96 /* ShoppingCart.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShoppingCart.storyboard; sourceTree = "<group>"; };
+		E114785928310D3900734A96 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
+		E1ED5F092832583400D10320 /* CartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCell.swift; sourceTree = "<group>"; };
 		FED5FEC2282EB9560073C991 /* Authorization.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Authorization.storyboard; sourceTree = "<group>"; };
 		FED5FEC4283157F40073C991 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FED5FEC62831583A0073C991 /* RegistartionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistartionViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +99,7 @@
 			children = (
 				63BE35B4282ABEA200DE27E2 /* Auth.storyboard */,
 				63BE35B9282ABEA300DE27E2 /* LaunchScreen.storyboard */,
+				E11478572831072100734A96 /* ShoppingCart.storyboard */,
 				FED5FEC2282EB9560073C991 /* Authorization.storyboard */,
 			);
 			path = Storyboards;
@@ -102,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				63BE35B2282ABEA200DE27E2 /* AuthViewController.swift */,
+				E114785928310D3900734A96 /* CartViewController.swift */,
 				FED5FEC4283157F40073C991 /* LoginViewController.swift */,
 				FED5FEC62831583A0073C991 /* RegistartionViewController.swift */,
 			);
@@ -133,6 +141,7 @@
 				63BB91E8282BE414000642C0 /* ProductItem.swift */,
 				63BB91EA282BE496000642C0 /* Order.swift */,
 				63BB91F0282BFEC8000642C0 /* User.swift */,
+				E1ED5F092832583400D10320 /* CartCell.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -206,6 +215,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E11478582831072100734A96 /* ShoppingCart.storyboard in Resources */,
 				FED5FEC3282EB9560073C991 /* Authorization.storyboard in Resources */,
 				63BE35BB282ABEA300DE27E2 /* LaunchScreen.storyboard in Resources */,
 				63BE35B8282ABEA300DE27E2 /* Assets.xcassets in Resources */,
@@ -225,7 +235,9 @@
 				63BE35B3282ABEA200DE27E2 /* AuthViewController.swift in Sources */,
 				6315B019282AC24F0011631A /* Product.swift in Sources */,
 				630E2C7C282E550900578D60 /* StoreManager.swift in Sources */,
+				E114785A28310D3900734A96 /* CartViewController.swift in Sources */,
 				63BB91ED282BE90C000642C0 /* OrderManager.swift in Sources */,
+				E1ED5F0A2832583400D10320 /* CartCell.swift in Sources */,
 				FED5FEC72831583A0073C991 /* RegistartionViewController.swift in Sources */,
 				63BE35AF282ABEA200DE27E2 /* AppDelegate.swift in Sources */,
 				63BB91F5282C00D6000642C0 /* ShoppingCartManager.swift in Sources */,
@@ -380,7 +392,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = HRYLC3C7SK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JointStoreProject/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -411,7 +423,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = HRYLC3C7SK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JointStoreProject/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
