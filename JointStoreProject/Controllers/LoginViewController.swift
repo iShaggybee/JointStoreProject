@@ -60,6 +60,7 @@ class LoginViewController: UIViewController {
         let alert = UIAlertController(title: header,
                                       message: body,
                                       preferredStyle: .alert)
+       
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
@@ -68,7 +69,7 @@ class LoginViewController: UIViewController {
         if authManager.login(login: loginTextField.text ?? "",
                              password: passwordTextField.text ?? ""
         ) {
-//            performSegue(withIdentifier: "", sender: loginButton)
+            performSegue(withIdentifier: "SuccessLoginSegue", sender: nil)
         } else {
             setAlert(header: "Упс", body: "Проверьте правильность введенных данных")
         }
@@ -96,7 +97,9 @@ extension LoginViewController: UITextFieldDelegate {
 
 extension LoginViewController: LoginViewControllerDelegate {
     func login(login: String, password: String) {
-        if !authManager.login(login: login, password: password) {
+        if authManager.login(login: login, password: password) {
+            performSegue(withIdentifier: "SuccessLoginSegue", sender: nil)
+        } else {
             setAlert(header: "Упс", body: "Не удалось авторизоваться")
         }
     }

@@ -93,11 +93,22 @@
                         <outlet property="loginButton" destination="07l-em-0sQ" id="sei-bi-Jqu"/>
                         <outlet property="loginTextField" destination="bXL-mv-zWx" id="DcH-WQ-Nhi"/>
                         <outlet property="passwordTextField" destination="EoD-K6-8k9" id="Kd7-2R-HdF"/>
+                        <segue destination="eeU-6J-Nvp" kind="show" identifier="SuccessLoginSegue" id="zJu-mG-o7s"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1016.25" y="79.225352112676063"/>
+        </scene>
+        <!--LinkingTabBar-->
+        <scene sceneID="acH-nq-Dls">
+            <objects>
+                <viewControllerPlaceholder storyboardName="LinkingTabBar" id="eeU-6J-Nvp" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="20H-xy-N5B"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0d4-tO-zTv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1902" y="-361"/>
         </scene>
         <!--Registartion View Controller-->
         <scene sceneID="Kof-Tg-lFS">
@@ -159,7 +170,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KYN-25-HwG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1966.875" y="-305.28169014084506"/>
+            <point key="canvasLocation" x="2428" y="102"/>
         </scene>
     </scenes>
     <resources>

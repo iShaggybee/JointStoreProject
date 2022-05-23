@@ -23,32 +23,29 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="77"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Помидоры красно-головозелёные" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GQ4-Zc-7oP">
-                                            <rect key="frame" x="16" y="22" width="192" height="33"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Помидоры" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GQ4-Zc-7oP">
+                                            <rect key="frame" x="15" y="30.5" width="70.5" height="16.5"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="х 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eTt-Hv-KT4">
-                                            <rect key="frame" x="215.5" y="30" width="19.5" height="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="х 2" textAlignment="natural" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eTt-Hv-KT4">
+                                            <rect key="frame" x="228.5" y="30" width="19.5" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="Fd4-wz-HyW">
-                                            <rect key="frame" x="243" y="23" width="61" height="31.5"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Fd4-wz-HyW">
+                                            <rect key="frame" x="258" y="22" width="47" height="33.5"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="300 руб." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="crX-36-KWH">
-                                                    <rect key="frame" x="1" y="0.0" width="60" height="17"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="60" id="Itk-ny-mep"/>
-                                                    </constraints>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="300 ₽" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="crX-36-KWH">
+                                                    <rect key="frame" x="0.0" y="0.0" width="47" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="150 руб/кг" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jN0-Cj-JT2">
-                                                    <rect key="frame" x="0.0" y="17" width="61" height="14.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="150 ₽/кг" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jN0-Cj-JT2">
+                                                    <rect key="frame" x="0.0" y="19" width="47" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -57,13 +54,14 @@
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="Fd4-wz-HyW" firstAttribute="centerY" secondItem="GQ4-Zc-7oP" secondAttribute="centerY" id="7dd-wb-MaM"/>
-                                        <constraint firstItem="Fd4-wz-HyW" firstAttribute="leading" secondItem="eTt-Hv-KT4" secondAttribute="trailing" constant="8" id="BPQ-vh-gkw"/>
-                                        <constraint firstItem="GQ4-Zc-7oP" firstAttribute="centerY" secondItem="A67-c8-VKN" secondAttribute="centerY" id="C4f-By-dUa"/>
-                                        <constraint firstAttribute="trailing" secondItem="Fd4-wz-HyW" secondAttribute="trailing" constant="16" id="NsD-0c-QKV"/>
-                                        <constraint firstItem="GQ4-Zc-7oP" firstAttribute="width" secondItem="A67-c8-VKN" secondAttribute="width" multiplier="0.6" priority="750" id="OKK-Cn-RAT"/>
-                                        <constraint firstItem="eTt-Hv-KT4" firstAttribute="centerY" secondItem="GQ4-Zc-7oP" secondAttribute="centerY" id="cy0-ek-4bx"/>
-                                        <constraint firstItem="GQ4-Zc-7oP" firstAttribute="leading" secondItem="A67-c8-VKN" secondAttribute="leading" constant="16" id="gYn-KA-uWM"/>
+                                        <constraint firstItem="GQ4-Zc-7oP" firstAttribute="centerY" secondItem="A67-c8-VKN" secondAttribute="centerY" id="62t-B6-OwI"/>
+                                        <constraint firstItem="Fd4-wz-HyW" firstAttribute="leading" secondItem="eTt-Hv-KT4" secondAttribute="trailing" constant="10" id="JLT-Da-4W2"/>
+                                        <constraint firstItem="eTt-Hv-KT4" firstAttribute="centerY" secondItem="A67-c8-VKN" secondAttribute="centerY" id="Lvx-ne-3xb"/>
+                                        <constraint firstItem="eTt-Hv-KT4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GQ4-Zc-7oP" secondAttribute="trailing" constant="10" id="Smj-1p-RgI"/>
+                                        <constraint firstItem="GQ4-Zc-7oP" firstAttribute="leading" secondItem="A67-c8-VKN" secondAttribute="leading" constant="15" id="gYn-KA-uWM"/>
+                                        <constraint firstItem="Fd4-wz-HyW" firstAttribute="height" secondItem="A67-c8-VKN" secondAttribute="height" multiplier="0.435065" id="lAu-Jl-uyi"/>
+                                        <constraint firstItem="Fd4-wz-HyW" firstAttribute="centerY" secondItem="A67-c8-VKN" secondAttribute="centerY" id="mlx-ga-MhT"/>
+                                        <constraint firstAttribute="trailing" secondItem="Fd4-wz-HyW" secondAttribute="trailing" constant="15" id="wAx-NV-VUU"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -93,15 +91,19 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E8o-Of-UVd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-800.625" y="90.845070422535215"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Корзина-->
         <scene sceneID="Zwr-uo-rj1">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TXH-Xs-zrK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController id="6j0-Zl-DOv" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Корзина" image="basket" id="foe-hS-BYq"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="m1y-Ox-yg1">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="91"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -110,12 +112,12 @@
                         <segue destination="MyM-Pj-im7" kind="relationship" relationship="rootViewController" id="gzg-8B-Lgj"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TXH-Xs-zrK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1579" y="91"/>
         </scene>
     </scenes>
     <resources>
+        <image name="basket" width="24" height="24"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
