@@ -116,7 +116,7 @@
                             <outlet property="delegate" destination="tqN-uX-HOb" id="4TS-Uc-fZX"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Товары" image="products" id="akN-Sc-3fe"/>
+                    <tabBarItem key="tabBarItem" title="Каталог" image="products" id="akN-Sc-3fe"/>
                     <navigationItem key="navigationItem" title="Каталог" id="Fk4-pp-K7f">
                         <barButtonItem key="leftBarButtonItem" image="arrow.uturn.backward" catalog="system" id="bfL-qO-Qkk">
                             <connections>

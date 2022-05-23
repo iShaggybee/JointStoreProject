@@ -29,8 +29,12 @@ class CartViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadData()
         setBackground()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        loadData()
+        tableView.reloadData()
     }
     
     // MARK: - Table view data source

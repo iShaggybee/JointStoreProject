@@ -8,14 +8,17 @@
 import UIKit
 
 class ProductListViewController: UITableViewController {
-    
     @IBOutlet var backToFullListButton: UIBarButtonItem!
     
-    private var products = StoreManager.shared.products
+    var delegate: LinkingTabBarViewController!
+    
+    private var storeManager = StoreManager.shared
     private let shoppingCartManager = ShoppingCartManager.shared
+    private var products = StoreManager.shared.products
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         backToFullListButton.tintColor = UIColor.clear
     }
     
@@ -23,9 +26,9 @@ class ProductListViewController: UITableViewController {
         showSearchAlert()
     }
     @IBAction func backToFullListButtonPressed(_ sender: Any) {
-        products = StoreManager.shared.products
-        title = "Каталог"
-        self.backToFullListButton.tintColor = UIColor.clear
+        products = storeManager.products
+        navigationItem.title = "Каталог"
+        backToFullListButton.tintColor = UIColor.clear
         DispatchQueue.main.async { self.tableView.reloadData() }
     }
     
@@ -43,7 +46,7 @@ class ProductListViewController: UITableViewController {
         cell.productImageView.image = UIImage(named: product.name)
         cell.productNameLabel.text = product.name
         cell.productDescriptionLabel.text = product.description
-        cell.productPriceLabel.text = "₽\(product.price)"
+        cell.productPriceLabel.text = "\(product.price) ₽"
         cell.addToCart = {
             self.shoppingCartManager.addProductItem(product: product, count: 1)
             self.showAddedToCartAlert(product)
@@ -60,6 +63,7 @@ class ProductListViewController: UITableViewController {
         let product = products[indexPath.row]
         
         productVC.product = product
+        productVC.delegate = delegate
     }
     
 }
@@ -76,13 +80,14 @@ extension UITextField {
 
 extension ProductListViewController {
     func showAddedToCartAlert(_ product: Product) {
-        
         let title = "Добавлено"
         let message = "Продукт '\(product.name)' добавлен в корзину. Продолжить покупки или перейти к корзине?"
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let backToStoreAction = UIAlertAction(title: "Продолжить", style: .default)
-        let goToCartAction = UIAlertAction(title: "Корзина", style: .default)
+        let goToCartAction = UIAlertAction(title: "Корзина", style: .default) { _ in
+            self.delegate.changeTabBarItem(on: .shoppingCart)
+        }
         alert.addAction(backToStoreAction)
         alert.addAction(goToCartAction)
         present(alert, animated: true)
@@ -92,28 +97,28 @@ extension ProductListViewController {
         let alert = UIAlertController(title: "Поиск", message: .none, preferredStyle: .alert)
         let searchAction = UIAlertAction(title: "Готово", style: .default)
         let cancelAction = UIAlertAction(title: "Отмена", style: .default) { _ in
-            self.products = StoreManager.shared.products
-            self.title = "Каталог"
+            self.products = self.storeManager.products
+            self.navigationItem.title = "Каталог"
             self.backToFullListButton.tintColor = UIColor.clear
             DispatchQueue.main.async { self.tableView.reloadData() }
         }
         
-        alert.addTextField(configurationHandler: {(textField: UITextField) in
+        alert.addTextField(configurationHandler: { (textField: UITextField) in
             textField.delegate = self
             textField.clearButtonMode = .whileEditing
             textField.returnKeyType = .done
             textField.setOnTextChangeListener {
-                if textField.text != "" && !textField.text!.isEmpty {
-                    self.products = StoreManager.shared.searchProducts(by: textField.text!)
-                    self.title = "Поиск: \(textField.text!)"
-                    self.backToFullListButton.tintColor = UIColor.systemBlue
-                    DispatchQueue.main.async { self.tableView.reloadData() }
-                } else {
-                    self.products = StoreManager.shared.products
-                    self.title = "Каталог"
+                if (textField.text ?? "").isEmpty {
+                    self.products = self.storeManager.products
+                    self.navigationItem.title = "Каталог"
                     self.backToFullListButton.tintColor = UIColor.clear
-                    DispatchQueue.main.async { self.tableView.reloadData() }
+                } else {
+                    self.products = self.storeManager.searchProducts(by: textField.text!)
+                    self.navigationItem.title = "Поиск: \(textField.text!)"
+                    self.backToFullListButton.tintColor = UIColor.systemBlue
                 }
+
+                DispatchQueue.main.async { self.tableView.reloadData() }
             }
         })
         
