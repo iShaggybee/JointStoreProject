@@ -116,6 +116,7 @@
                             <outlet property="delegate" destination="tqN-uX-HOb" id="4TS-Uc-fZX"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="Товары" image="products" id="akN-Sc-3fe"/>
                     <navigationItem key="navigationItem" title="Каталог" id="Fk4-pp-K7f">
                         <barButtonItem key="leftBarButtonItem" image="arrow.uturn.backward" catalog="system" id="bfL-qO-Qkk">
                             <connections>
@@ -128,6 +129,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="backToFullListButton" destination="bfL-qO-Qkk" id="FGr-R7-Ahu"/>
                     </connections>
@@ -161,7 +163,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qpz-J8-TDx">
-                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="574"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bwl-vr-CL9">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="634.5"/>
@@ -318,6 +320,7 @@
     </scenes>
     <resources>
         <image name="arrow.uturn.backward" catalog="system" width="128" height="112"/>
+        <image name="products" width="24" height="24"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

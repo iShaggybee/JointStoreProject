@@ -8,7 +8,6 @@
 import UIKit
 
 class ProductCell: UITableViewCell {
-
     @IBOutlet var productImageView: UIImageView!
     @IBOutlet var productNameLabel: UILabel!
     @IBOutlet var productDescriptionLabel: UILabel!
@@ -19,5 +18,4 @@ class ProductCell: UITableViewCell {
     @IBAction func addToCartButtonPressed() {
         addToCart()
     }
-    
 }

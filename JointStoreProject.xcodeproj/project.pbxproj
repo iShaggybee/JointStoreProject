@@ -103,7 +103,6 @@
 		63BE35C2282ABEAF00DE27E2 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				63BE35B4282ABEA200DE27E2 /* Auth.storyboard */,
 				13CCBD442834C0D000299198 /* Shop.storyboard */,
 				63BE35B9282ABEA300DE27E2 /* LaunchScreen.storyboard */,
 				E11478572831072100734A96 /* ShoppingCart.storyboard */,
@@ -117,9 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				13CCBD462834C14E00299198 /* ProductListViewController.swift */,
-				13CCBD482834C17200299198 /* ProductCell.swift */,
 				13CCBD4A2834C19100299198 /* ProductViewController.swift */,
-				63BE35B2282ABEA200DE27E2 /* AuthViewController.swift */,
 				E114785928310D3900734A96 /* CartViewController.swift */,
 				FED5FEC4283157F40073C991 /* LoginViewController.swift */,
 				FED5FEC62831583A0073C991 /* RegistartionViewController.swift */,
@@ -148,6 +145,7 @@
 		63BE35C6282ABEFE00DE27E2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				13CCBD482834C17200299198 /* ProductCell.swift */,
 				6315B018282AC24F0011631A /* Product.swift */,
 				63BB91E8282BE414000642C0 /* ProductItem.swift */,
 				63BB91EA282BE496000642C0 /* Order.swift */,
