@@ -8,16 +8,12 @@
 import UIKit
 
 class OrderListController: UITableViewController {
-    
-//    private let listOrder = OrderManager.shared.getOrders()
-    private let listOrder = StoreManager.shared.getTestOrders() // Тестовый метод удалить когда проект будет собираться на основной ветке
+    private let listOrder = OrderManager.shared.getOrders()
    
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if listOrder.count == 0 {
             noOrders()
-        } else {
-            return listOrder.count
         }
         return listOrder.count
     }
