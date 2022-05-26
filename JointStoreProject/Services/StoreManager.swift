@@ -5,6 +5,8 @@
 //  Created by Kislov Vadim on 13.05.2022.
 //
 
+import Foundation
+
 class StoreManager {
      static let shared = StoreManager()
 
