@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "84_2_agromsk_ogur_kornish_300gr_4000x4000s1.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

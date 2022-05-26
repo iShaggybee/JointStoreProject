@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NsX-XK-d1D">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Linking Tab Bar View Controller-->
+        <scene sceneID="xxs-9e-uNS">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="NsX-XK-d1D" customClass="LinkingTabBarViewController" customModule="JointStoreProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eu6-dI-vgf">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="TPy-jg-CiZ" kind="relationship" relationship="viewControllers" id="cVA-gz-JM3"/>
+                        <segue destination="5r3-F5-CXc" kind="relationship" relationship="viewControllers" id="2kG-z1-mCx"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rWT-tl-ZDF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1047.8260869565217" y="112.5"/>
+        </scene>
+        <!--Shop-->
+        <scene sceneID="tGu-yY-bSf">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Shop" id="TPy-jg-CiZ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="ZZs-yB-MUu"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NKg-la-yb1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1696" y="-179"/>
+        </scene>
+        <!--ShoppingCart-->
+        <scene sceneID="Ha4-3Z-iJK">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ShoppingCart" id="5r3-F5-CXc" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Корзина" id="J4S-5U-nrg"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Edz-LV-Pgw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1696" y="157"/>
+        </scene>
+    </scenes>
+</document>
