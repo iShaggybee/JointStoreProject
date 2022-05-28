@@ -181,7 +181,6 @@ class CartViewController: UITableViewController {
         let stepper = UIStepper()
         
         stepper.minimumValue = 0
-        stepper.maximumValue = 99
         stepper.stepValue = 1
         stepper.addTarget(self, action: #selector(stepperPress), for: .valueChanged)
         
