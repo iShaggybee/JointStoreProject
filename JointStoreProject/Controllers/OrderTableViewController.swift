@@ -26,7 +26,7 @@ class OrderTableViewController: UITableViewController {
         
         cell.productsImage.image = UIImage(named: order.product.name)
         cell.itemLabel.text = order.product.name
-        cell.priceLabel.text = String("\(order.product.price)₽ x \(order.count)шт     \(order.product.price * order.count)₽")
+        cell.priceLabel.text = String("\(order.product.price) ₽ x \(order.count) \(order.product.unit.rawValue)     \(order.product.price * order.count) ₽")
         
         return cell
     }

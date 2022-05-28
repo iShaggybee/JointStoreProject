@@ -28,40 +28,48 @@
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
+                                            <size key="shadowOffset" width="0.0" height="0.0"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="х 2" textAlignment="natural" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eTt-Hv-KT4">
-                                            <rect key="frame" x="228.5" y="30" width="19.5" height="17"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Fd4-wz-HyW">
-                                            <rect key="frame" x="258" y="22" width="47" height="33.5"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="dSI-ub-e5g">
+                                            <rect key="frame" x="228.5" y="22" width="76.5" height="33.5"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="300 ₽" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="crX-36-KWH">
-                                                    <rect key="frame" x="0.0" y="0.0" width="47" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="х 2" textAlignment="natural" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eTt-Hv-KT4">
+                                                    <rect key="frame" x="0.0" y="8" width="19.5" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
+                                                    <size key="shadowOffset" width="0.0" height="0.0"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="150 ₽/кг" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jN0-Cj-JT2">
-                                                    <rect key="frame" x="0.0" y="19" width="47" height="14.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Fd4-wz-HyW">
+                                                    <rect key="frame" x="29.5" y="0.0" width="47" height="33.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" ambiguous="YES" text="300 ₽" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="crX-36-KWH">
+                                                            <rect key="frame" x="0.0" y="0.0" width="47" height="17"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="150 ₽/кг" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jN0-Cj-JT2">
+                                                            <rect key="frame" x="0.0" y="19" width="47" height="14.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="crX-36-KWH" firstAttribute="centerX" secondItem="Fd4-wz-HyW" secondAttribute="centerX" id="PCo-cK-n9J"/>
+                                                        <constraint firstItem="jN0-Cj-JT2" firstAttribute="centerX" secondItem="Fd4-wz-HyW" secondAttribute="centerX" id="wmZ-JZ-T7v"/>
+                                                    </constraints>
+                                                </stackView>
                                             </subviews>
                                         </stackView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="dSI-ub-e5g" secondAttribute="trailing" constant="15" id="17u-Ea-QWY"/>
                                         <constraint firstItem="GQ4-Zc-7oP" firstAttribute="centerY" secondItem="A67-c8-VKN" secondAttribute="centerY" id="62t-B6-OwI"/>
-                                        <constraint firstItem="Fd4-wz-HyW" firstAttribute="leading" secondItem="eTt-Hv-KT4" secondAttribute="trailing" constant="10" id="JLT-Da-4W2"/>
-                                        <constraint firstItem="eTt-Hv-KT4" firstAttribute="centerY" secondItem="A67-c8-VKN" secondAttribute="centerY" id="Lvx-ne-3xb"/>
-                                        <constraint firstItem="eTt-Hv-KT4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GQ4-Zc-7oP" secondAttribute="trailing" constant="10" id="Smj-1p-RgI"/>
+                                        <constraint firstItem="dSI-ub-e5g" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GQ4-Zc-7oP" secondAttribute="trailing" constant="15" id="Nuh-39-8yV"/>
+                                        <constraint firstItem="dSI-ub-e5g" firstAttribute="centerY" secondItem="A67-c8-VKN" secondAttribute="centerY" id="btb-xd-Kar"/>
                                         <constraint firstItem="GQ4-Zc-7oP" firstAttribute="leading" secondItem="A67-c8-VKN" secondAttribute="leading" constant="15" id="gYn-KA-uWM"/>
-                                        <constraint firstItem="Fd4-wz-HyW" firstAttribute="height" secondItem="A67-c8-VKN" secondAttribute="height" multiplier="0.435065" id="lAu-Jl-uyi"/>
-                                        <constraint firstItem="Fd4-wz-HyW" firstAttribute="centerY" secondItem="A67-c8-VKN" secondAttribute="centerY" id="mlx-ga-MhT"/>
-                                        <constraint firstAttribute="trailing" secondItem="Fd4-wz-HyW" secondAttribute="trailing" constant="15" id="wAx-NV-VUU"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>

@@ -83,6 +83,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		630E5F9D283FF1C400ABEA22 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E1ED5F092832583400D10320 /* CartCell.swift */,
+				89568ADA2836773B001D3CD2 /* OrderTableViewCell.swift */,
+				13CCBD482834C17200299198 /* ProductCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		63BE35A2282ABEA200DE27E2 = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +112,7 @@
 		63BE35AD282ABEA200DE27E2 /* JointStoreProject */ = {
 			isa = PBXGroup;
 			children = (
+				630E5F9D283FF1C400ABEA22 /* Views */,
 				63BE35C7282ABF2400DE27E2 /* Services */,
 				63BE35C6282ABEFE00DE27E2 /* Models */,
 				63BE35C4282ABEE900DE27E2 /* App */,
@@ -128,10 +139,8 @@
 		63BE35C3282ABECE00DE27E2 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				63BE35B2282ABEA200DE27E2 /* AuthViewController.swift */,
 				89593B8F2833B51D004417F4 /* OrderListController.swift */,
 				89B95FCF28366993008B1DAA /* OrderTableViewController.swift */,
-				89568ADC28367749001D3CD2 /* Cells */,
 				13CCBD462834C14E00299198 /* ProductListViewController.swift */,
 				13CCBD4A2834C19100299198 /* ProductViewController.swift */,
 				E114785928310D3900734A96 /* CartViewController.swift */,
@@ -163,12 +172,10 @@
 		63BE35C6282ABEFE00DE27E2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				13CCBD482834C17200299198 /* ProductCell.swift */,
 				6315B018282AC24F0011631A /* Product.swift */,
 				63BB91E8282BE414000642C0 /* ProductItem.swift */,
 				63BB91EA282BE496000642C0 /* Order.swift */,
 				63BB91F0282BFEC8000642C0 /* User.swift */,
-				E1ED5F092832583400D10320 /* CartCell.swift */,
 				632AF513283B90A900DE79E3 /* TabBarItem.swift */,
 			);
 			path = Models;
@@ -183,14 +190,6 @@
 				630E2C7B282E550900578D60 /* StoreManager.swift */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		89568ADC28367749001D3CD2 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				89568ADA2836773B001D3CD2 /* OrderTableViewCell.swift */,
-			);
-			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,7 +257,6 @@
 				63BE35BB282ABEA300DE27E2 /* LaunchScreen.storyboard in Resources */,
 				632AF510283A80A800DE79E3 /* LinkingTabBar.storyboard in Resources */,
 				63BE35B8282ABEA300DE27E2 /* Assets.xcassets in Resources */,
-				63BE35B6282ABEA200DE27E2 /* Auth.storyboard in Resources */,
 				89593B8E2833B3D6004417F4 /* OrderList.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

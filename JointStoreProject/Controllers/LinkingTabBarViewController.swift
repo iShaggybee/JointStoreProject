@@ -19,6 +19,10 @@ class LinkingTabBarViewController: UITabBarController {
             if let navigationVC = viewController as? UINavigationController {
                 if let vc = navigationVC.topViewController as? ProductListViewController {
                     vc.delegate = self
+                } else if let vc = navigationVC.topViewController as? CartViewController {
+                    vc.delegate = self
+                } else if let vc = navigationVC.topViewController as? OrderListController {
+                    vc.delegate = self
                 }
             }
         }
@@ -28,5 +32,13 @@ class LinkingTabBarViewController: UITabBarController {
 extension LinkingTabBarViewController: LinkingTabBarVCDelegate {
     func changeTabBarItem(on item: TabBarItem) {
         selectedIndex = item.rawValue
+        
+        if let navigationVC = selectedViewController as? UINavigationController {
+            if let _ = navigationVC.topViewController as? OrderTableViewController {
+                navigationVC.popViewController(animated: false)
+            } else if let vc = navigationVC.topViewController as? ProductListViewController {
+                vc.resetViewState()
+            }
+        }
     }
 }

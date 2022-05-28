@@ -19,14 +19,14 @@ class OrderManager {
     func getOrders() -> [Order] {
         guard let currentUserIndex = authManager.currentUserIndex else { return [] }
         
-        return orders.filter { $0.userIndex == currentUserIndex }
+        return orders.reversed().filter { $0.userIndex == currentUserIndex }
     }
     
     /// Создание заказа
     func createOrder(products: [ProductItem]) {
         guard let currentUserIndex = authManager.currentUserIndex else { return }
         
-        let number = Int.random(in: 1000000..<999999)
+        let number = Int.random(in: 100000..<999999)
         
         orders.append(getNewOrder(products: products,
                                   number: number,

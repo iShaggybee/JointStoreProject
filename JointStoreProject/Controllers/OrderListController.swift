@@ -8,14 +8,22 @@
 import UIKit
 
 class OrderListController: UITableViewController {
-    private let listOrder = OrderManager.shared.getOrders()
+    var delegate: LinkingTabBarViewController!
+    
+    private let orderManager = OrderManager.shared
+    private var orderList: [Order] = []
+    
+    override func viewWillAppear(_ animated: Bool) {
+        loadData()
+    }
    
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if listOrder.count == 0 {
+        if orderList.isEmpty {
             noOrders()
         }
-        return listOrder.count
+        
+        return orderList.count
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -25,7 +33,7 @@ class OrderListController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "pushOrder", for: indexPath)
         var content = cell.defaultContentConfiguration()
-        let order = listOrder[indexPath.row]
+        let order = orderList[indexPath.row]
         
         content.text = "Заказ №\(order.number)"
         content.secondaryText = "\(order.items.count) позиций • \(order.totalPrice)₽ \nДата заказа: \(order.date)"
@@ -38,15 +46,23 @@ class OrderListController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let indexPath = tableView.indexPathForSelectedRow {
             guard let orderVC = segue.destination as? OrderTableViewController else { return }
-            orderVC.order = listOrder[indexPath.row]
+            orderVC.order = orderList[indexPath.row]
         }
+    }
+    
+    private func loadData() {
+        orderList = orderManager.getOrders()
+        
+        tableView.reloadData()
     }
 }
 
 extension OrderListController {
     func noOrders() {
         let alertController = UIAlertController(title: "Здесь пока пусто", message: "Перейдите в каталог, чтобы наполнить корзину", preferredStyle: .alert)
-        let alertOk = UIAlertAction(title: "Перейти в каталог", style: .default, handler: nil)
+        let alertOk = UIAlertAction(title: "Перейти в каталог", style: .default) { _ in
+            self.delegate.changeTabBarItem(on: .products)
+        }
         
         alertController.view.tintColor = .red
         

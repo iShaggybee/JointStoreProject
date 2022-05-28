@@ -19,6 +19,7 @@
                     <connections>
                         <segue destination="TPy-jg-CiZ" kind="relationship" relationship="viewControllers" id="cVA-gz-JM3"/>
                         <segue destination="5r3-F5-CXc" kind="relationship" relationship="viewControllers" id="2kG-z1-mCx"/>
+                        <segue destination="WgF-dQ-Yng" kind="relationship" relationship="viewControllers" id="SIp-2q-Zm3"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rWT-tl-ZDF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -29,7 +30,7 @@
         <scene sceneID="tGu-yY-bSf">
             <objects>
                 <viewControllerPlaceholder storyboardName="Shop" id="TPy-jg-CiZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="ZZs-yB-MUu"/>
+                    <tabBarItem key="tabBarItem" title="Каталог" id="ZZs-yB-MUu"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NKg-la-yb1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -44,6 +45,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Edz-LV-Pgw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1696" y="157"/>
+        </scene>
+        <!--OrderList-->
+        <scene sceneID="YCC-At-EBd">
+            <objects>
+                <viewControllerPlaceholder storyboardName="OrderList" id="WgF-dQ-Yng" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Заказы" id="iJu-Tk-XJ8"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Qb-aR-zaY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1662" y="327"/>
         </scene>
     </scenes>
 </document>

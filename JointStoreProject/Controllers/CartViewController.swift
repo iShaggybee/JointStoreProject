@@ -8,6 +8,8 @@
 import UIKit
 
 class CartViewController: UITableViewController {
+    var delegate: LinkingTabBarViewController!
+    
     private let shoppingCartManager = ShoppingCartManager.shared
     private var cart: [ProductItem] = [] {
         didSet {
@@ -34,7 +36,6 @@ class CartViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         loadData()
-        tableView.reloadData()
     }
     
     // MARK: - Table view data source
@@ -80,11 +81,12 @@ class CartViewController: UITableViewController {
     @IBAction func trashButtonPress(_ sender: UIBarButtonItem) {
         shoppingCartManager.clearShoppingCart()
         loadData()
-        tableView.reloadData()
     }
     
     @IBAction func createOrderButtonPress() {
         shoppingCartManager.createOrder()
+        
+        delegate.changeTabBarItem(on: .orders)
     }
     
     @objc func stepperPress(sender: UIStepper) {
@@ -132,6 +134,8 @@ class CartViewController: UITableViewController {
 
     private func loadData() {
         cart = shoppingCartManager.getProducts()
+        
+        tableView.reloadData()
     }
     
     private func updateFooter() {

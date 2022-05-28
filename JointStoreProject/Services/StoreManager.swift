@@ -10,7 +10,7 @@ import Foundation
 class StoreManager {
      static let shared = StoreManager()
 
-     let products = [
+     private let products = [
         Product(name: "Помидоры розовые",
                 description: "Помидоры имеют превосходные вкусовые качества и аромат. Мякоть у плодов данного сорта отличается особенной нежностью и сладковатым вкусом",
                 price: 120,
@@ -71,9 +71,14 @@ class StoreManager {
 
      private init() {}
     
+    /// Получить список всех продуктов
+    func getAllProducts() -> [Product] {
+        products
+    }
+    
     /// Поиск товара из доступных по полному/частичному названию
-    func searchProducts(by search: String) -> [Product] {
-        let trimmed = search.trimmingCharacters(in: .whitespacesAndNewlines)
+    func getProductsBy(name: String) -> [Product] {
+        let trimmed = name.trimmingCharacters(in: .whitespacesAndNewlines)
         
         return products.filter { $0.name.lowercased().contains(trimmed.lowercased()) }
     }

@@ -14,22 +14,17 @@ class ProductListViewController: UITableViewController {
     
     private var storeManager = StoreManager.shared
     private let shoppingCartManager = ShoppingCartManager.shared
-    private var products = StoreManager.shared.products
+    private var products: [Product] = []
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        backToFullListButton.tintColor = UIColor.clear
+        resetViewState()
     }
     
     @IBAction func searchButtonPressed(_ sender: Any) {
         showSearchAlert()
     }
     @IBAction func backToFullListButtonPressed(_ sender: Any) {
-        products = storeManager.products
-        navigationItem.title = "Каталог"
-        backToFullListButton.tintColor = UIColor.clear
-        DispatchQueue.main.async { self.tableView.reloadData() }
+        resetViewState()
     }
     
     // MARK: - Table view data source
@@ -66,6 +61,11 @@ class ProductListViewController: UITableViewController {
         productVC.delegate = delegate
     }
     
+    func resetViewState() {
+        navigationItem.title = "Каталог"
+        backToFullListButton.tintColor = UIColor.clear
+        loadData(searchQuery: "")
+    }
 }
 
 extension UITextField {
@@ -97,10 +97,7 @@ extension ProductListViewController {
         let alert = UIAlertController(title: "Поиск", message: .none, preferredStyle: .alert)
         let searchAction = UIAlertAction(title: "Готово", style: .default)
         let cancelAction = UIAlertAction(title: "Отмена", style: .default) { _ in
-            self.products = self.storeManager.products
-            self.navigationItem.title = "Каталог"
-            self.backToFullListButton.tintColor = UIColor.clear
-            DispatchQueue.main.async { self.tableView.reloadData() }
+            self.resetViewState()
         }
         
         alert.addTextField(configurationHandler: { (textField: UITextField) in
@@ -108,29 +105,35 @@ extension ProductListViewController {
             textField.clearButtonMode = .whileEditing
             textField.returnKeyType = .done
             textField.setOnTextChangeListener {
-                if (textField.text ?? "").isEmpty {
-                    self.products = self.storeManager.products
-                    self.navigationItem.title = "Каталог"
-                    self.backToFullListButton.tintColor = UIColor.clear
-                } else {
-                    self.products = self.storeManager.searchProducts(by: textField.text!)
-                    self.navigationItem.title = "Поиск: \(textField.text!)"
+                if let text = textField.text {
+                    self.navigationItem.backButtonTitle = "Каталог"
+                    self.navigationItem.title = "Поиск: \(text)"
                     self.backToFullListButton.tintColor = UIColor.systemBlue
+                    self.loadData(searchQuery: text)
+                } else {
+                    self.loadData(searchQuery: "")
                 }
-
-                DispatchQueue.main.async { self.tableView.reloadData() }
             }
         })
-        
+
         alert.addAction(searchAction)
         alert.addAction(cancelAction)
         present(alert, animated: true)
+    }
+    
+    private func loadData(searchQuery: String) {
+        products = searchQuery.isEmpty
+            ? storeManager.getAllProducts()
+            : storeManager.getProductsBy(name: searchQuery)
+        
+        tableView.reloadData()
     }
 }
 
 extension ProductListViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.dismiss(animated: true)
+        
         return true
     }
 }

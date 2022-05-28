@@ -118,6 +118,7 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Каталог" image="products" id="akN-Sc-3fe"/>
                     <navigationItem key="navigationItem" title="Каталог" id="Fk4-pp-K7f">
+                        <barButtonItem key="backBarButtonItem" title="Каталог" id="fNW-YA-bfP"/>
                         <barButtonItem key="leftBarButtonItem" image="arrow.uturn.backward" catalog="system" id="bfL-qO-Qkk">
                             <connections>
                                 <action selector="backToFullListButtonPressed:" destination="tqN-uX-HOb" id="YAI-nW-LbQ"/>
@@ -296,13 +297,13 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="VFj-EW-Poa"/>
                             </scrollView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="ApM-Lj-JHY"/>
+                        <viewLayoutGuide key="safeArea" id="oaa-NH-Lgm"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="qpz-J8-TDx" firstAttribute="leading" secondItem="ApM-Lj-JHY" secondAttribute="leading" id="6gw-b8-7LK"/>
-                            <constraint firstItem="qpz-J8-TDx" firstAttribute="trailing" secondItem="ApM-Lj-JHY" secondAttribute="trailing" id="IcC-eA-seM"/>
-                            <constraint firstItem="qpz-J8-TDx" firstAttribute="bottom" secondItem="ApM-Lj-JHY" secondAttribute="bottom" id="Prl-OK-K2q"/>
-                            <constraint firstItem="qpz-J8-TDx" firstAttribute="top" secondItem="ApM-Lj-JHY" secondAttribute="top" id="Znn-90-Bab"/>
+                            <constraint firstItem="qpz-J8-TDx" firstAttribute="leading" secondItem="oaa-NH-Lgm" secondAttribute="leading" id="6gw-b8-7LK"/>
+                            <constraint firstItem="qpz-J8-TDx" firstAttribute="trailing" secondItem="oaa-NH-Lgm" secondAttribute="trailing" id="IcC-eA-seM"/>
+                            <constraint firstItem="qpz-J8-TDx" firstAttribute="bottom" secondItem="oaa-NH-Lgm" secondAttribute="bottom" id="Prl-OK-K2q"/>
+                            <constraint firstItem="qpz-J8-TDx" firstAttribute="top" secondItem="oaa-NH-Lgm" secondAttribute="top" id="Znn-90-Bab"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Rct-pH-nPq"/>
