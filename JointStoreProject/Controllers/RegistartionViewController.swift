@@ -12,8 +12,9 @@ class RegistartionViewController: UIViewController {
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var registerationButton: UIButton!
     
-    let authManager = AuthManager.shared
     var delegate: LoginViewControllerDelegate!
+    
+    private let authManager = AuthManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()

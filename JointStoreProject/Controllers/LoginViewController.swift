@@ -24,13 +24,20 @@ class LoginViewController: UIViewController {
         self.loginTextField.delegate = self
         self.passwordTextField.delegate = self
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let registrationVC = segue.destination as? RegistartionViewController else {
             return
         }
         
         registrationVC.delegate = self
+    }
+    
+    @IBAction func unwind(_ unwindSegue: UIStoryboardSegue) {
+        authManager.logout()
+        
+        loginTextField.text = ""
+        passwordTextField.text = ""
     }
     
     @IBAction func authorizing() {
