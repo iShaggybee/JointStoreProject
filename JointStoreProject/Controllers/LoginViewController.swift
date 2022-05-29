@@ -16,7 +16,7 @@ class LoginViewController: UIViewController {
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var loginButton: UIButton!
     
-    let authManager = AuthManager.shared
+    private let authManager = AuthManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()

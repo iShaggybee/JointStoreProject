@@ -12,7 +12,7 @@ class OrderTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = String("Заказ №: \(order.number) от \(order.date)")
+        navigationItem.title = String("Заказ № \(order.number) от \(order.date)")
     }
     
     // MARK: - Table view data source

@@ -12,7 +12,7 @@ class ProductListViewController: UITableViewController {
     
     var delegate: LinkingTabBarViewController!
     
-    private var storeManager = StoreManager.shared
+    private let storeManager = StoreManager.shared
     private let shoppingCartManager = ShoppingCartManager.shared
     private var products: [Product] = []
     

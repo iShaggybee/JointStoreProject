@@ -16,13 +16,44 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="teamCell" id="qKa-x8-isF">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="teamCell" rowHeight="113" id="qKa-x8-isF" customClass="PersonCell" customModule="JointStoreProject" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="113"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qKa-x8-isF" id="L44-kF-gc1">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="113"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="x92-dj-LY8">
+                                            <rect key="frame" x="20" y="8" width="131.5" height="97"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Вадим Кислов" translatesAutoresizingMaskIntoConstraints="NO" id="ca0-R8-Nly">
+                                                    <rect key="frame" x="0.0" y="11" width="75" height="75"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="75" id="9Sv-bf-ci5"/>
+                                                        <constraint firstAttribute="width" secondItem="ca0-R8-Nly" secondAttribute="height" multiplier="1:1" id="CWP-3M-uFh"/>
+                                                    </constraints>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rO2-v8-MDo">
+                                                    <rect key="frame" x="90" y="38.5" width="41.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="x92-dj-LY8" firstAttribute="centerY" secondItem="L44-kF-gc1" secondAttribute="centerY" id="d8R-ZM-nen"/>
+                                        <constraint firstItem="x92-dj-LY8" firstAttribute="top" secondItem="L44-kF-gc1" secondAttribute="top" constant="8" id="hBo-s4-LHA"/>
+                                        <constraint firstItem="x92-dj-LY8" firstAttribute="leading" secondItem="L44-kF-gc1" secondAttribute="leading" constant="20" symbolic="YES" id="jsi-BF-k0O"/>
+                                        <constraint firstAttribute="bottom" secondItem="x92-dj-LY8" secondAttribute="bottom" constant="8" id="kbH-aU-Bvj"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="fullNameLabel" destination="rO2-v8-MDo" id="m0V-rA-aE8"/>
+                                    <outlet property="logoImage" destination="ca0-R8-Nly" id="NC7-hy-Atj"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -32,9 +63,9 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Команда" image="group" id="Roa-NO-Idv"/>
                     <navigationItem key="navigationItem" title="Команда" id="X2l-Ow-25E">
-                        <barButtonItem key="leftBarButtonItem" image="escape" catalog="system" id="x5y-Hm-hiD">
+                        <barButtonItem key="rightBarButtonItem" image="log-out" id="x5y-Hm-hiD">
                             <connections>
-                                <segue destination="5pS-Mf-HxM" kind="unwind" unwindAction="unwind:" id="iEM-3J-Cfg"/>
+                                <segue destination="5pS-Mf-HxM" kind="unwind" unwindAction="unwind:" id="HMz-ay-n9P"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -65,8 +96,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="escape" catalog="system" width="128" height="121"/>
         <image name="group" width="24" height="24"/>
+        <image name="log-out" width="24" height="24"/>
+        <image name="Вадим Кислов" width="4032" height="3024"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

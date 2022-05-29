@@ -35,7 +35,7 @@ class OrderListController: UITableViewController {
         var content = cell.defaultContentConfiguration()
         let order = orderList[indexPath.row]
         
-        content.text = "Заказ №\(order.number)"
+        content.text = "Заказ № \(order.number)"
         content.secondaryText = "\(order.items.count) позиций • \(order.totalPrice)₽ \nДата заказа: \(order.date)"
 
         cell.contentConfiguration = content
