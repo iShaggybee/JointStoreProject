@@ -11,7 +11,7 @@ class TeamManager {
     let team = [
         Person(name: "Вадим", surname: "Кислов"),
         Person(name: "Павел", surname: "Безбородов"),
-        Person(name: "Андрей", surname: ""),
+        Person(name: "Андрей", surname: "Барсук"),
         Person(name: "Игорь", surname: "Богданов"),
         Person(name: "Борис", surname: "Павлов")
     ]
