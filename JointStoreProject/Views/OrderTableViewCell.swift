@@ -11,5 +11,5 @@ class OrderTableViewCell: UITableViewCell {
     @IBOutlet weak var productsImage: UIImageView!
     @IBOutlet weak var itemLabel: UILabel!
     @IBOutlet weak var priceWithCountLabel: UILabel!
-    @IBOutlet weak var totalPriceLAbel: UILabel!
+    @IBOutlet weak var totalPriceLabel: UILabel!
 }

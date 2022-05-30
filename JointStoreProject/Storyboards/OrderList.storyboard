@@ -100,7 +100,7 @@
                                     <outlet property="itemLabel" destination="CWC-uy-uGq" id="KOb-9m-Vk0"/>
                                     <outlet property="priceWithCountLabel" destination="hUr-jp-knz" id="0CY-YG-EIL"/>
                                     <outlet property="productsImage" destination="wk7-zd-4uZ" id="Vqn-nW-Cnm"/>
-                                    <outlet property="totalPriceLAbel" destination="O5K-Wi-G2m" id="r7K-tP-pWI"/>
+                                    <outlet property="totalPriceLabel" destination="O5K-Wi-G2m" id="r7K-tP-pWI"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
