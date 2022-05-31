@@ -37,6 +37,7 @@ class OrderListController: UITableViewController {
         
         content.text = "Заказ № \(order.number)"
         content.secondaryText = "\(order.items.count) позиций • \(order.totalPrice)₽ \nДата заказа: \(order.date)"
+        content.image = UIImage(named: "checkç")
 
         cell.contentConfiguration = content
         return cell

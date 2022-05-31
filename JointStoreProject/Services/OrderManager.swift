@@ -34,7 +34,7 @@ class OrderManager {
     }
     
     private func getNewOrder(products: [ProductItem], number: Int, userIndex: Int) -> Order {
-        let date = Date.now.formatted(date: .long, time: .shortened)
+        let date = Date.now.formatted(date: .abbreviated, time: .shortened)
         
         let totalPrice = products.reduce(0, { $0 + $1.getTotalPrice() })
         
