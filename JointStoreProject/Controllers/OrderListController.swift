@@ -8,7 +8,7 @@
 import UIKit
 
 class OrderListController: UITableViewController {
-    var delegate: LinkingTabBarViewController!
+    var delegate: LinkingTabBarVCDelegate!
     
     private let orderManager = OrderManager.shared
     private var orderList: [Order] = []

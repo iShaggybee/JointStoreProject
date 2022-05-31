@@ -14,7 +14,7 @@ class ProductViewController: UIViewController {
     @IBOutlet var productDescriptionLabel: UILabel!
     
     var product: Product!
-    var delegate: LinkingTabBarViewController!
+    var delegate: LinkingTabBarVCDelegate!
     
     private let shoppingCartManager = ShoppingCartManager.shared
     

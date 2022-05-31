@@ -8,7 +8,7 @@
 import UIKit
 
 class CartViewController: UITableViewController {
-    var delegate: LinkingTabBarViewController!
+    var delegate: LinkingTabBarVCDelegate!
     
     private let shoppingCartManager = ShoppingCartManager.shared
     private var cart: [ProductItem] = [] {
@@ -128,7 +128,7 @@ class CartViewController: UITableViewController {
         let productItem = cart[index.row]
         
         shoppingCartManager.removeProductItem(product: productItem.product)
-        loadData()
+        cart = shoppingCartManager.getProducts()
         updateFooter()
     }
 
@@ -184,13 +184,15 @@ class CartViewController: UITableViewController {
         stepper.stepValue = 1
         stepper.addTarget(self, action: #selector(stepperPress), for: .valueChanged)
         
-        let incrementImage = stepper.incrementImage(for: .normal)?.withTintColor(.systemGreen,
-                                                                                 renderingMode: .alwaysOriginal)
+        let incrementImage = stepper
+            .incrementImage(for: .normal)?
+            .withTintColor(.systemGreen, renderingMode: .alwaysOriginal)
         
         stepper.setIncrementImage(incrementImage, for: .normal)
         
-        let decrementImage = stepper.decrementImage(for: .normal)?.withTintColor(.systemRed,
-                                                                                 renderingMode: .alwaysOriginal)
+        let decrementImage = stepper
+            .decrementImage(for: .normal)?
+            .withTintColor(.systemRed,renderingMode: .alwaysOriginal)
         
         stepper.setDecrementImage(decrementImage, for: .normal)
         

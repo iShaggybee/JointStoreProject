@@ -10,7 +10,7 @@ import UIKit
 class ProductListViewController: UITableViewController {
     @IBOutlet var backToFullListButton: UIBarButtonItem!
     
-    var delegate: LinkingTabBarViewController!
+    var delegate: LinkingTabBarVCDelegate!
     
     private let storeManager = StoreManager.shared
     private let shoppingCartManager = ShoppingCartManager.shared
