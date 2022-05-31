@@ -15,8 +15,14 @@ class LoginViewController: UIViewController {
     @IBOutlet var loginTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var loginButton: UIButton!
+    @IBOutlet weak var backgroundView: UIView!
+    @IBOutlet weak var logoStackView: UIStackView!
+    @IBOutlet weak var widthLogoConstraint: NSLayoutConstraint!
+    @IBOutlet weak var axisYLogoConstaint: NSLayoutConstraint!
+    @IBOutlet weak var logoTitleLabel: UILabel!
     
     private let authManager = AuthManager.shared
+    var needAimate = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -109,6 +115,25 @@ extension LoginViewController: LoginViewControllerDelegate {
         } else {
             setAlert(header: "Упс", body: "Не удалось авторизоваться")
         }
+    }
+}
+
+extension LoginViewController {
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        guard needAimate else {return}
+        self.widthLogoConstraint.constant = 80
+        self.axisYLogoConstaint.constant = -200
+        UIView.animate(withDuration: 1, delay: 0) {
+            self.backgroundView.alpha = 0
+            self.logoTitleLabel.alpha = 0
+            self.view.layoutIfNeeded()
+        } completion: { _ in
+            self.backgroundView.isHidden = true
+        }
+        
+        needAimate = false
     }
 }
 
