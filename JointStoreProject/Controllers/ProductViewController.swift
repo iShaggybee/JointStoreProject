@@ -23,7 +23,7 @@ class ProductViewController: UIViewController {
         
         productImageView.image = UIImage(named: product.name)
         productNameLabel.text = product.name
-        productPriceLabel.text = "\(product.price) ₽"
+        productPriceLabel.text = "₽\(product.price)/\(product.unit.rawValue)"
         productDescriptionLabel.text = product.description
     }
     
