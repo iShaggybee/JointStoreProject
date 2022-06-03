@@ -138,7 +138,7 @@ extension LoginViewController {
             logoStackView.centerYAnchor.constraint(equalTo: view.topAnchor, constant: newCenterLogo)
         ])
 
-        UIView.animate(withDuration: 1.5, delay: 0) {
+        UIView.animate(withDuration: 0.8, delay: 0) {
             self.backgroundView.alpha = 0
             self.view.layoutIfNeeded()
         } completion: { _ in
