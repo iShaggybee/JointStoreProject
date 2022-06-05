@@ -15,22 +15,22 @@ class LoginViewController: UIViewController {
     @IBOutlet var loginTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var loginButton: UIButton!
-    @IBOutlet weak var labelStackView: UIStackView!
+    @IBOutlet var labelStackView: UIStackView!
+    
     var backgroundView: UIView!
     var logoStackView: UIStackView!
     var logoTitleLabel: UILabel!
+    var needAnimate = true
     
     private let authManager = AuthManager.shared
-    var needAnimate = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.loginTextField.delegate = self
-        self.passwordTextField.delegate = self
+        loginTextField.delegate = self
+        passwordTextField.delegate = self
         
         setupViewForAnimation()
-        
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -67,8 +67,8 @@ class LoginViewController: UIViewController {
         }
         
         let userInfo = users[userIndex]
+
         setAlert(header: "Ничего страшного, \(userInfo.login)", body: "Ваш пароль: \(userInfo.password)")
-            
     }
     
    private func setAlert(header: String, body: String) {
@@ -77,7 +77,7 @@ class LoginViewController: UIViewController {
                                       preferredStyle: .alert)
        
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
     
     private func login() {
@@ -87,6 +87,7 @@ class LoginViewController: UIViewController {
             performSegue(withIdentifier: "SuccessLoginSegue", sender: nil)
         } else {
             setAlert(header: "Упс", body: "Проверьте правильность введенных данных")
+            passwordTextField.text = ""
         }
     }
 }
@@ -100,13 +101,11 @@ extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == loginTextField {
             passwordTextField.becomeFirstResponder()
-            
-            return true
         } else {
             login()
-            
-            return true
         }
+        
+        return true
     }
 }
 
@@ -121,10 +120,8 @@ extension LoginViewController: LoginViewControllerDelegate {
 }
 
 extension LoginViewController {
-    
     override func viewDidAppear(_ animated: Bool) {
-        
-        guard needAnimate else {return}
+        guard needAnimate else { return }
         
         logoTitleLabel.isHidden = true
         
@@ -149,7 +146,6 @@ extension LoginViewController {
     }
     
     func setupViewForAnimation() {
-        
         backgroundView = UIView(frame: UIScreen.main.bounds)
         backgroundView.frame.origin = CGPoint(x: 0, y: 0)
         backgroundView.backgroundColor = .white
@@ -164,6 +160,7 @@ extension LoginViewController {
         view.addSubview(logoStackView)
         
         let imageView = UIImageView(image: UIImage(named: "number4"))
+        
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         logoStackView.addArrangedSubview(imageView)
@@ -175,7 +172,6 @@ extension LoginViewController {
         logoStackView.addArrangedSubview(logoTitleLabel)
         
         NSLayoutConstraint.activate([
-            
             imageView.widthAnchor.constraint(equalToConstant: 240),
             imageView.heightAnchor.constraint(equalToConstant: 212),
 

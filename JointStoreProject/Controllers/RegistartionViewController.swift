@@ -56,16 +56,12 @@ extension RegistartionViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == loginTextField {
             passwordTextField.becomeFirstResponder()
-            
-            return true
         } else if loginTextField.hasText == false || passwordTextField.hasText == false {
             setAlert(header: "Упс", body: "Проверьте заполенение всех полей")
-            
-            return true
         } else {
             registerNewAccount()
-            
-            return true
         }
+        
+        return true
     }
 }
