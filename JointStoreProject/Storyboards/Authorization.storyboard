@@ -80,52 +80,20 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V8Q-qb-sVG">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="5hV-6Y-sS9">
-                                <rect key="frame" x="40" y="141" width="240" height="286.5"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="number4" translatesAutoresizingMaskIntoConstraints="NO" id="vL2-Ds-FX4">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="212"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="240" id="ip7-cL-0iM"/>
-                                            <constraint firstAttribute="width" secondItem="vL2-Ds-FX4" secondAttribute="height" multiplier="60:53" id="lMn-pR-GNS"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Четверочка" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uak-vX-qg5">
-                                        <rect key="frame" x="8.5" y="236" width="223" height="50.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="42"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="rRb-IC-obx" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="5xb-d6-34K"/>
-                            <constraint firstItem="V8Q-qb-sVG" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="DsH-bA-SkL"/>
-                            <constraint firstItem="V8Q-qb-sVG" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="OY6-uJ-uIp"/>
-                            <constraint firstItem="5hV-6Y-sS9" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="STU-JL-cHG"/>
-                            <constraint firstItem="5hV-6Y-sS9" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="fG5-FQ-IPl"/>
-                            <constraint firstItem="V8Q-qb-sVG" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="gXJ-2x-WDz"/>
-                            <constraint firstItem="V8Q-qb-sVG" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="q1B-y5-YZc"/>
                             <constraint firstItem="rRb-IC-obx" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="tYu-DD-ZUe"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="nOR-ac-gDZ"/>
                     <connections>
-                        <outlet property="axisYLogoConstaint" destination="fG5-FQ-IPl" id="BZ2-jr-Xx0"/>
-                        <outlet property="backgroundView" destination="V8Q-qb-sVG" id="0RS-sg-w11"/>
+                        <outlet property="labelStackView" destination="rRb-IC-obx" id="JLB-l1-bOG"/>
                         <outlet property="loginButton" destination="07l-em-0sQ" id="sei-bi-Jqu"/>
                         <outlet property="loginTextField" destination="bXL-mv-zWx" id="DcH-WQ-Nhi"/>
-                        <outlet property="logoStackView" destination="5hV-6Y-sS9" id="nTM-ed-kwA"/>
-                        <outlet property="logoTitleLabel" destination="Uak-vX-qg5" id="Im4-9Z-3Ci"/>
                         <outlet property="passwordTextField" destination="EoD-K6-8k9" id="Kd7-2R-HdF"/>
-                        <outlet property="widthLogoConstraint" destination="ip7-cL-0iM" id="UAh-JH-fgp"/>
                         <segue destination="eeU-6J-Nvp" kind="show" identifier="SuccessLoginSegue" id="zJu-mG-o7s"/>
                     </connections>
                 </viewController>
@@ -207,10 +175,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="number4" width="2000" height="2000"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="tintColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

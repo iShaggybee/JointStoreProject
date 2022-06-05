@@ -15,20 +15,22 @@ class LoginViewController: UIViewController {
     @IBOutlet var loginTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var loginButton: UIButton!
-    @IBOutlet weak var backgroundView: UIView!
-    @IBOutlet weak var logoStackView: UIStackView!
-    @IBOutlet weak var widthLogoConstraint: NSLayoutConstraint!
-    @IBOutlet weak var axisYLogoConstaint: NSLayoutConstraint!
-    @IBOutlet weak var logoTitleLabel: UILabel!
+    @IBOutlet weak var labelStackView: UIStackView!
+    var backgroundView: UIView!
+    var logoStackView: UIStackView!
+    var logoTitleLabel: UILabel!
     
     private let authManager = AuthManager.shared
-    var needAimate = true
+    var needAnimate = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.loginTextField.delegate = self
         self.passwordTextField.delegate = self
+        
+        setupViewForAnimation()
+        
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -122,18 +124,64 @@ extension LoginViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         
-        guard needAimate else {return}
-        self.widthLogoConstraint.constant = 80
-        self.axisYLogoConstaint.constant = -200
-        UIView.animate(withDuration: 1, delay: 0) {
+        guard needAnimate else {return}
+        
+        logoTitleLabel.isHidden = true
+        
+        let newCenterLogo = labelStackView.frame.origin.y / 2
+        let maxWidth = loginTextField.bounds.width * 0.75
+        let maxSizeToBoard = (newCenterLogo - 40) * 2
+        
+        NSLayoutConstraint.activate([
+            logoStackView.widthAnchor.constraint(equalToConstant: min(maxWidth, maxSizeToBoard)),
+            logoStackView.heightAnchor.constraint(equalToConstant: min(maxWidth, maxSizeToBoard)),
+            logoStackView.centerYAnchor.constraint(equalTo: view.topAnchor, constant: newCenterLogo)
+        ])
+
+        UIView.animate(withDuration: 0.8, delay: 0) {
             self.backgroundView.alpha = 0
-            self.logoTitleLabel.alpha = 0
             self.view.layoutIfNeeded()
         } completion: { _ in
             self.backgroundView.isHidden = true
         }
         
-        needAimate = false
+        needAnimate = false
+    }
+    
+    func setupViewForAnimation() {
+        
+        backgroundView = UIView(frame: UIScreen.main.bounds)
+        backgroundView.frame.origin = CGPoint(x: 0, y: 0)
+        backgroundView.backgroundColor = .white
+        view.addSubview(backgroundView)
+        
+        logoStackView = UIStackView(frame: CGRect())
+        logoStackView.translatesAutoresizingMaskIntoConstraints = false
+        logoStackView.axis = .vertical
+        logoStackView.alignment = .center
+        logoStackView.distribution = .fill
+        logoStackView.spacing = 24
+        view.addSubview(logoStackView)
+        
+        let imageView = UIImageView(image: UIImage(named: "number4"))
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        logoStackView.addArrangedSubview(imageView)
+        
+        logoTitleLabel = UILabel()
+        logoTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        logoTitleLabel.font = UIFont.systemFont(ofSize: 42)
+        logoTitleLabel.text = "Четверочка"
+        logoStackView.addArrangedSubview(logoTitleLabel)
+        
+        NSLayoutConstraint.activate([
+            
+            imageView.widthAnchor.constraint(equalToConstant: 240),
+            imageView.heightAnchor.constraint(equalToConstant: 212),
+
+            logoStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            logoStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
     }
 }
 
