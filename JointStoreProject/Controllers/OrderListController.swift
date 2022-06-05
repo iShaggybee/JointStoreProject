@@ -11,7 +11,19 @@ class OrderListController: UITableViewController {
     var delegate: LinkingTabBarVCDelegate!
     
     private let orderManager = OrderManager.shared
-    private var orderList: [Order] = []
+    private var orderList: [Order] = [] {
+        didSet {
+            let hidden = !orderList.isEmpty
+            backgroundView.isHidden = hidden
+            self.navigationController?.setNavigationBarHidden(!hidden, animated: false)
+        }
+    }
+    private let backgroundView = UIView()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setBackground()
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         loadData()
@@ -19,10 +31,6 @@ class OrderListController: UITableViewController {
    
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if orderList.isEmpty {
-            noOrders()
-        }
-        
         return orderList.count
     }
     
@@ -37,6 +45,7 @@ class OrderListController: UITableViewController {
         
         content.text = "Заказ № \(order.number)"
         content.secondaryText = "\(order.items.count) позиций • \(order.totalPrice)₽ \nДата заказа: \(order.date)"
+        content.image = UIImage(named: "order")
 
         cell.contentConfiguration = content
         return cell
@@ -58,16 +67,34 @@ class OrderListController: UITableViewController {
 }
 
 extension OrderListController {
-    func noOrders() {
-        let alertController = UIAlertController(title: "Здесь пока пусто", message: "Перейдите в каталог, чтобы наполнить корзину", preferredStyle: .alert)
-        let alertOk = UIAlertAction(title: "Перейти в каталог", style: .default) { _ in
-            self.delegate.changeTabBarItem(on: .products)
-        }
+    private func setBackground() {
+        let width = UIScreen.main.bounds.size.width
+        let height = UIScreen.main.bounds.size.height
         
-        alertController.view.tintColor = .red
+        backgroundView.frame = CGRect(x: 0, y: 0, width: width, height: height)
+    
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: height / 2))
         
-        alertController.addAction(alertOk)
-        self.present(alertController, animated: true, completion: nil)
+        label.text = "Вы пока ничего не заказывали :("
+        label.textColor = .lightGray
+        label.font = UIFont(name: "Helvetica Neue", size: 20)
+        label.textAlignment = .center
+        
+        let imageViewBackground = UIImageView(frame: CGRect(x: width / 4,
+                                                            y: height / 4,
+                                                            width: width / 2,
+                                                            height: height / 2))
+        
+        imageViewBackground.image = UIImage(named: "noOrder")?.withTintColor(.lightGray)
+        imageViewBackground.contentMode = .scaleAspectFit
+        imageViewBackground.contentScaleFactor = 0.5
+        
+        backgroundView.addSubview(label)
+        backgroundView.addSubview(imageViewBackground)
+        
+        view.addSubview(backgroundView)
+        view.sendSubviewToBack(backgroundView)
     }
 }
+
 
