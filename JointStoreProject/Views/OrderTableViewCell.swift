@@ -8,8 +8,17 @@
 import UIKit
 
 class OrderTableViewCell: UITableViewCell {
-    @IBOutlet weak var productsImage: UIImageView!
-    @IBOutlet weak var itemLabel: UILabel!
-    @IBOutlet weak var priceWithCountLabel: UILabel!
-    @IBOutlet weak var totalPriceLabel: UILabel!
+    @IBOutlet var productsImage: UIImageView!
+    @IBOutlet var itemLabel: UILabel!
+    @IBOutlet var priceWithCountLabel: UILabel!
+    @IBOutlet var totalPriceLabel: UILabel!
+    
+    func configure(productItem: ProductItem) {
+        let product = productItem.product
+        
+        productsImage.image = UIImage(named: product.name)
+        itemLabel.text = product.name
+        priceWithCountLabel.text = "\(product.price) ₽ x \(productItem.count) \(product.unit.rawValue)"
+        totalPriceLabel.text = "Всего \(productItem.getTotalPrice()) ₽"
+    }
 }

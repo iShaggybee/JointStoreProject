@@ -12,6 +12,7 @@ class OrderTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         navigationItem.title = String("Заказ №\(order.number) • \(order.date)")
     }
     
@@ -22,13 +23,8 @@ class OrderTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "orderCell", for: indexPath) as! OrderTableViewCell
-        let productItem = order.items[indexPath.row]
-        let product = productItem.product
         
-        cell.productsImage.image = UIImage(named: product.name)
-        cell.itemLabel.text = product.name
-        cell.priceWithCountLabel.text = "\(product.price) ₽ x \(productItem.count) \(product.unit.rawValue)"
-        cell.totalPriceLabel.text = "Всего \(productItem.getTotalPrice()) ₽"
+        cell.configure(productItem: order.items[indexPath.row])
         
         return cell
     }

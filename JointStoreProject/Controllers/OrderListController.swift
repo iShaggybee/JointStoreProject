@@ -14,14 +14,16 @@ class OrderListController: UITableViewController {
     private var orderList: [Order] = [] {
         didSet {
             let hidden = !orderList.isEmpty
+
             backgroundView.isHidden = hidden
-            self.navigationController?.setNavigationBarHidden(!hidden, animated: false)
+            navigationController?.setNavigationBarHidden(!hidden, animated: false)
         }
     }
     private let backgroundView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setBackground()
     }
     
@@ -31,7 +33,7 @@ class OrderListController: UITableViewController {
    
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return orderList.count
+        orderList.count
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
