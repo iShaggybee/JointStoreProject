@@ -20,13 +20,6 @@ class ProductListViewController: UITableViewController {
         resetViewState()
     }
     
-    @IBAction func searchButtonPressed(_ sender: Any) {
-        showSearchAlert()
-    }
-    @IBAction func backToFullListButtonPressed(_ sender: Any) {
-        resetViewState()
-    }
-    
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -37,12 +30,7 @@ class ProductListViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "productCell", for: indexPath) as! ProductCell
         let product = products[indexPath.row]
         
-        cell.selectionStyle = .none
-        cell.productImageView.image = UIImage(named: product.name)
-        cell.productNameLabel.text = product.name
-        cell.productDescriptionLabel.text = product.description
-        cell.productPriceLabel.text = "₽\(product.price)/\(product.unit.rawValue)"
-        cell.addToCart = {
+        cell.configure(product: product) {
             self.shoppingCartManager.addProductItem(product: product, count: 1)
             self.showAddedToCartAlert(product)
         }
@@ -61,10 +49,11 @@ class ProductListViewController: UITableViewController {
         productVC.delegate = delegate
     }
     
-    func resetViewState() {
-        navigationItem.title = "Каталог"
-        backToFullListButton.tintColor = UIColor.clear
-        loadData(searchQuery: "")
+    @IBAction func searchButtonPressed(_ sender: Any) {
+        showSearchAlert()
+    }
+    @IBAction func backToFullListButtonPressed(_ sender: Any) {
+        resetViewState()
     }
 }
 
@@ -119,6 +108,12 @@ extension ProductListViewController {
         alert.addAction(searchAction)
         alert.addAction(cancelAction)
         present(alert, animated: true)
+    }
+    
+    func resetViewState() {
+        navigationItem.title = "Каталог"
+        backToFullListButton.tintColor = UIColor.clear
+        loadData(searchQuery: "")
     }
     
     private func loadData(searchQuery: String) {

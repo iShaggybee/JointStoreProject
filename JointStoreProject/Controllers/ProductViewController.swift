@@ -23,7 +23,7 @@ class ProductViewController: UIViewController {
         
         productImageView.image = UIImage(named: product.name)
         productNameLabel.text = product.name
-        productPriceLabel.text = "₽\(product.price)/\(product.unit.rawValue)"
+        productPriceLabel.text = "\(product.price)₽/\(product.unit.rawValue)"
         productDescriptionLabel.text = product.description
     }
     
@@ -32,7 +32,7 @@ class ProductViewController: UIViewController {
         self.showAddedToCartAlert(product)
     }
     
-    func showAddedToCartAlert(_ product: Product) {
+    private func showAddedToCartAlert(_ product: Product) {
         let title = "Добавлено"
         let message = "Продукт '\(product.name)' добавлен в корзину. Продолжить покупки или перейти к корзине?"
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -49,6 +49,5 @@ class ProductViewController: UIViewController {
         alert.addAction(goToCartAction)
         present(alert, animated: true)
     }
-    
 }
 
