@@ -165,6 +165,22 @@ class CartViewController: UITableViewController {
         cell.editingAccessoryView = stepper
     }
     
+    private func showAlert(title: String, message: String, titleButton: [String], clouser: @escaping (UIAlertAction) -> ()) {
+        let alertController = UIAlertController(title: title,
+                                                message: message,
+                                                preferredStyle: .alert)
+        
+        for titleButton in titleButton {
+            let buttonController = UIAlertAction(title: titleButton, style: .default) { action in
+                    clouser(action)
+            }
+            alertController.addAction(buttonController)
+        }
+        present(alertController, animated: true)
+    }
+}
+
+extension CartViewController {
     private func getAnimation(positive: Bool) -> CASpringAnimation {
         let animation = CASpringAnimation(keyPath: "transform.scale")
         
@@ -227,20 +243,4 @@ class CartViewController: UITableViewController {
         view.addSubview(backgroundView)
         view.sendSubviewToBack(backgroundView)
     }
-    
-    private func showAlert(title: String, message: String, titleButton: [String], clouser: @escaping (UIAlertAction) -> ()) {
-        let alertController = UIAlertController(title: title,
-                                                message: message,
-                                                preferredStyle: .alert)
-        
-        for titleButton in titleButton {
-            let buttonController = UIAlertAction(title: titleButton, style: .default) { action in
-                    clouser(action)
-            }
-            alertController.addAction(buttonController)
-        }
-        present(alertController, animated: true)
-    }
 }
-
-
